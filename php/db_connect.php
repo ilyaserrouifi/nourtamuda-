@@ -7,7 +7,6 @@ class Database {
     
     private function __construct() {
         try {
-            // Construction de la chaîne de connexion PostgreSQL
             $dsn = "pgsql:host=" . DB_HOST . 
                    ";port=" . DB_PORT . 
                    ";dbname=" . DB_NAME . 
@@ -19,13 +18,12 @@ class Database {
                 PDO::ATTR_EMULATE_PREPARES => false
             ]);
             
-            // Initialiser la base de données si nécessaire
             $this->initDatabase();
             
         } catch (PDOException $e) {
             die(json_encode([
                 'success' => false,
-                'error' => 'Erreur de connexion à la base de données: ' . $e->getMessage()
+                'error' => 'Erreur de connexion: ' . $e->getMessage()
             ]));
         }
     }
@@ -42,8 +40,7 @@ class Database {
     }
     
     private function initDatabase() {
-        // Vérifier si les tables existent
-        $tables = ['matieres', 'professeurs', 'offres', 'galerie', 'temoignages', 'messages', 'newsletter'];
+        $tables = ['matieres', 'professeurs', 'offres', 'galerie', 'temoignages', 'messages', 'newsletter', 'stats', 'admin_users'];
         
         $tableExists = true;
         foreach ($tables as $table) {
@@ -91,7 +88,6 @@ class Database {
                     diplome VARCHAR(200),
                     telephone VARCHAR(20),
                     email VARCHAR(100),
-                    horaires VARCHAR(200),
                     actif BOOLEAN DEFAULT TRUE,
                     ordre_affichage INT DEFAULT 0,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -179,13 +175,13 @@ class Database {
                     taux_reussite INT DEFAULT 96,
                     inscriptions_annee INT DEFAULT 156,
                     taux_satisfaction INT DEFAULT 98,
-            villes_couvertes INT DEFAULT 5,
+                    villes_couvertes INT DEFAULT 5,
                     heures_cours INT DEFAULT 12500,
                     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             ");
             
-            // Table utilisateurs admin
+            // Table admin_users
             $this->connection->exec("
                 CREATE TABLE IF NOT EXISTS admin_users (
                     id SERIAL PRIMARY KEY,
@@ -195,7 +191,6 @@ class Database {
                 )
             ");
             
-            // Insérer les données par défaut
             $this->insertDefaultData();
             
         } catch (PDOException $e) {
@@ -204,12 +199,11 @@ class Database {
     }
     
     private function insertDefaultData() {
-        // Vérifier si les matières existent déjà
+        // Vérifier si les matières existent
         $stmt = $this->connection->query("SELECT COUNT(*) FROM matieres");
         $count = $stmt->fetchColumn();
         
         if ($count == 0) {
-            // Insertion des matières par défaut
             $matieres = [
                 ['Mathématiques', '📐', '#1B3A6B', 'Algèbre, géométrie, analyse, probabilités', 'Primaire,Collège,Lycée', 'Maîtriser les concepts fondamentaux', 1],
                 ['Physique-Chimie', '⚛️', '#2E7D32', 'Mécanique, électricité, chimie', 'Collège,Lycée', 'Comprendre les lois physiques', 2],
@@ -217,7 +211,7 @@ class Database {
                 ['Français', '📖', '#9C27B0', 'Grammaire, conjugaison, expression', 'Primaire,Collège,Lycée', 'Améliorer l\'expression écrite', 4],
                 ['Arabe', '📜', '#FF9800', 'Langue et littérature arabes', 'Primaire,Collège,Lycée', 'Maîtriser la grammaire arabe', 5],
                 ['Anglais', '🇬🇧', '#F44336', 'Grammaire, vocabulaire, conversation', 'Primaire,Collège,Lycée', 'Atteindre niveau B2/C1', 6],
-                ['Histoire-Géo', '🗺️', '#795548', 'Histoire du Maroc, géographie mondiale', 'Collège,Lycée', 'Comprendre l\'histoire marocaine', 7],
+                ['Histoire-Géographie', '🗺️', '#795548', 'Histoire du Maroc, géographie mondiale', 'Collège,Lycée', 'Comprendre l\'histoire marocaine', 7],
                 ['Informatique', '💻', '#607D8B', 'Algorithmique, programmation', 'Primaire,Collège,Lycée', 'Apprendre à coder', 8],
                 ['Philosophie', '🧠', '#673AB7', 'Préparation au BAC philo', 'Lycée', 'Maîtriser la méthode de dissertation', 9]
             ];
@@ -235,16 +229,21 @@ class Database {
             $passwordHash = password_hash('nourtamuda2025', PASSWORD_DEFAULT);
             $stmt = $this->connection->prepare("INSERT INTO admin_users (username, password_hash) VALUES ('admin', ?) ON CONFLICT (username) DO NOTHING");
             $stmt->execute([$passwordHash]);
+            
+            // Insertion stats par défaut
+            $this->connection->exec("
+                INSERT INTO stats (eleves, professeurs, annees, taux_reussite, inscriptions_annee, taux_satisfaction, villes_couvertes, heures_cours) 
+                VALUES (428, 12, 8, 96, 156, 98, 5, 12500)
+            ");
         }
     }
 }
 
-// Fonction helper pour les réponses JSON
 function sendResponse($success, $data = null, $message = null) {
     $response = ['success' => $success];
     if ($data !== null) $response['data'] = $data;
     if ($message !== null) $response['message'] = $message;
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
