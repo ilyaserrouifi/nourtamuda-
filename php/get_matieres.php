@@ -14,11 +14,6 @@ try {
     
     $matieres = $stmt->fetchAll();
     
-    // Transformer niveaux en tableau
-    foreach ($matieres as &$matiere) {
-        $matiere['niveaux'] = explode(',', $matiere['niveaux']);
-    }
-    
     sendResponse(true, $matieres);
     
 } catch (PDOException $e) {
