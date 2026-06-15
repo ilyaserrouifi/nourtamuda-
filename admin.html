@@ -11,12 +11,12 @@
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- Chart.js pour les graphiques -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     
     <style>
         /* ============================================================ */
-        /* RESET & VARIABLES - ADMIN */
+        /* RESET & VARIABLES ADMIN */
         /* ============================================================ */
         * {
             margin: 0;
@@ -78,14 +78,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .login-header {
@@ -205,6 +199,7 @@
             text-decoration: none;
             transition: var(--transition);
             position: relative;
+            cursor: pointer;
         }
 
         .sidebar-link:hover {
@@ -236,7 +231,6 @@
             margin-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
-            color: rgba(255, 255, 255, 0.6);
         }
 
         .logout-link:hover {
@@ -300,6 +294,19 @@
             box-shadow: var(--shadow-md);
         }
 
+        .btn-refresh {
+            background: var(--admin-info);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         /* Widgets Stats */
         .stats-widgets {
             display: grid;
@@ -352,6 +359,7 @@
             border-radius: var(--border-radius);
             padding: 20px;
             box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
         }
 
         .dashboard-graph h3 {
@@ -362,6 +370,18 @@
         canvas {
             max-height: 300px;
             width: 100%;
+        }
+
+        .recent-messages {
+            background: var(--admin-white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .recent-messages h3 {
+            margin-bottom: 15px;
+            color: var(--admin-bleu);
         }
 
         /* Tables */
@@ -375,6 +395,7 @@
         .admin-table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
         }
 
         .admin-table th,
@@ -450,6 +471,35 @@
             margin-bottom: 8px;
         }
 
+        /* Status badges */
+        .status-lu {
+            background: var(--admin-success);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            display: inline-block;
+        }
+
+        .status-non-lu {
+            background: var(--admin-warning);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            display: inline-block;
+        }
+
+        .btn-marquer-lu {
+            background: var(--admin-info);
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -479,14 +529,8 @@
         }
 
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .close-modal {
@@ -557,69 +601,31 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* Message status */
-        .status-lu {
-            background: var(--admin-success);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
+        .photo-preview {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Loader */
+        .loader-small {
             display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
         }
 
-        .status-non-lu {
-            background: var(--admin-warning);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            display: inline-block;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        .btn-marquer-lu {
-            background: var(--admin-info);
-            color: white;
-            border: none;
-            padding: 4px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 11px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .admin-sidebar {
-                left: -280px;
-            }
-            .admin-sidebar.open {
-                left: 0;
-            }
-            .admin-main {
-                margin-left: 0;
-                padding: 15px;
-            }
-            .mobile-menu-btn {
-                display: block;
-                position: fixed;
-                top: 15px;
-                left: 15px;
-                z-index: 101;
-                background: var(--admin-bleu);
-                color: white;
-                border: none;
-                padding: 10px;
-                border-radius: 8px;
-                cursor: pointer;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-
+        /* Mobile */
         .mobile-menu-btn {
+            display: none;
             position: fixed;
             top: 15px;
             left: 15px;
@@ -633,20 +639,30 @@
             font-size: 18px;
         }
 
-        .photo-preview {
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            object-fit: cover;
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                left: -280px;
+            }
+            .admin-sidebar.open {
+                left: 0;
+            }
+            .admin-main {
+                margin-left: 0;
+                padding: 15px;
+                padding-top: 60px;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Bouton menu mobile -->
+    <!-- Mobile menu button -->
     <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
 
-    <!-- Page de Login -->
+    <!-- Login Page -->
     <div id="loginPage" class="login-container">
         <div class="login-card">
             <div class="login-header">
@@ -662,13 +678,15 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" id="adminPassword" placeholder="Mot de passe" required>
                 </div>
-                <button type="submit" class="login-btn">Connexion <i class="fas fa-arrow-right"></i></button>
+                <button type="submit" class="login-btn" id="loginBtn">
+                    Connexion <i class="fas fa-arrow-right"></i>
+                </button>
                 <div id="loginError" class="error-message"></div>
             </form>
         </div>
     </div>
 
-    <!-- Dashboard Admin -->
+    <!-- Dashboard -->
     <div id="dashboardPage" style="display: none;">
         
         <!-- Sidebar -->
@@ -678,28 +696,31 @@
                 <p>Panel Administrateur</p>
             </div>
             <nav class="sidebar-nav">
-                <a href="#" data-section="dashboard" class="sidebar-link active">
+                <div data-section="dashboard" class="sidebar-link active">
                     <i class="fas fa-chart-line"></i> Tableau de bord
-                </a>
-                <a href="#" data-section="matieres" class="sidebar-link">
+                </div>
+                <div data-section="matieres" class="sidebar-link">
                     <i class="fas fa-book"></i> Matières
-                </a>
-                <a href="#" data-section="professeurs" class="sidebar-link">
+                </div>
+                <div data-section="professeurs" class="sidebar-link">
                     <i class="fas fa-chalkboard-user"></i> Professeurs
-                </a>
-                <a href="#" data-section="offres" class="sidebar-link">
+                </div>
+                <div data-section="offres" class="sidebar-link">
                     <i class="fas fa-tags"></i> Offres
-                </a>
-                <a href="#" data-section="galerie" class="sidebar-link">
+                </div>
+                <div data-section="galerie" class="sidebar-link">
                     <i class="fas fa-images"></i> Galerie
-                </a>
-                <a href="#" data-section="messages" class="sidebar-link">
+                </div>
+                <div data-section="temoignages" class="sidebar-link">
+                    <i class="fas fa-star"></i> Témoignages
+                </div>
+                <div data-section="messages" class="sidebar-link">
                     <i class="fas fa-envelope"></i> Messages
                     <span id="msgBadge" class="badge">0</span>
-                </a>
-                <a href="#" id="logoutBtnAdmin" class="sidebar-link logout-link">
+                </div>
+                <div id="logoutBtnAdmin" class="sidebar-link logout-link">
                     <i class="fas fa-sign-out-alt"></i> Déconnexion
-                </a>
+                </div>
             </nav>
         </div>
 
@@ -734,14 +755,29 @@
                     <div class="stat-widget">
                         <div class="stat-icon"><i class="fas fa-envelope"></i></div>
                         <div class="stat-info">
-                            <h3 id="statMessages">0</h3>
+                            <h3 id="statMessagesNonLus">0</h3>
                             <p>Messages non lus</p>
                         </div>
                     </div>
                 </div>
+                
                 <div class="dashboard-graph">
-                    <h3><i class="fas fa-chart-bar"></i> Statistiques des inscriptions (2024-2025)</h3>
+                    <h3><i class="fas fa-chart-bar"></i> Évolution des inscriptions</h3>
                     <canvas id="activityChart"></canvas>
+                </div>
+                
+                <div class="recent-messages">
+                    <h3><i class="fas fa-clock"></i> Derniers messages reçus</h3>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr><th>Nom</th><th>Email</th><th>Message</th><th>Date</th><th>Status</th></tr>
+                            </thead>
+                            <tbody id="recentMessagesList">
+                                <tr><td colspan="5" style="text-align:center;">Chargement...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -754,11 +790,11 @@
                 <div class="table-container">
                     <table class="admin-table">
                         <thead>
-                            <tr>
-                                <th>ID</th><th>Icône</th><th>Nom</th><th>Niveaux</th><th>Description</th><th>Actions</th>
-                            </tr>
+                            <tr><th>ID</th><th>Icône</th><th>Nom</th><th>Niveaux</th><th>Description</th><th>Actions</th></tr>
                         </thead>
-                        <tbody id="matieresTableBody"></tbody>
+                        <tbody id="matieresTableBody">
+                            <tr><td colspan="6" style="text-align:center;">Chargement...</td></tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -772,11 +808,11 @@
                 <div class="table-container">
                     <table class="admin-table">
                         <thead>
-                            <tr>
-                                <th>ID</th><th>Photo</th><th>Nom</th><th>Matière</th><th>Expérience</th><th>Bio</th><th>Actions</th>
-                            </tr>
+                            <tr><th>ID</th><th>Photo</th><th>Nom</th><th>Matière</th><th>Expérience</th><th>Bio</th><th>Actions</th></tr>
                         </thead>
-                        <tbody id="professeursTableBody"></tbody>
+                        <tbody id="professeursTableBody">
+                            <tr><td colspan="7" style="text-align:center;">Chargement...</td></tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -790,11 +826,11 @@
                 <div class="table-container">
                     <table class="admin-table">
                         <thead>
-                            <tr>
-                                <th>ID</th><th>Nom</th><th>Prix</th><th>Durée</th><th>Matières</th><th>Niveau</th><th>Actions</th>
-                            </tr>
+                            <tr><th>ID</th><th>Nom</th><th>Prix</th><th>Durée</th><th>Matières</th><th>Niveau</th><th>Actions</th></tr>
                         </thead>
-                        <tbody id="offresTableBody"></tbody>
+                        <tbody id="offresTableBody">
+                            <tr><td colspan="7" style="text-align:center;">Chargement...</td></tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -805,22 +841,43 @@
                     <h2><i class="fas fa-images"></i> Gestion de la Galerie</h2>
                     <button class="btn-add" id="openAddImage"><i class="fas fa-plus"></i> Ajouter une image</button>
                 </div>
-                <div class="galerie-admin-grid" id="galerieAdminGrid"></div>
+                <div class="galerie-admin-grid" id="galerieAdminGrid">
+                    <div style="text-align:center; width:100%;">Chargement...</div>
+                </div>
+            </div>
+
+            <!-- Témoignages Section -->
+            <div id="temoignagesSection" class="admin-section">
+                <div class="section-header-admin">
+                    <h2><i class="fas fa-star"></i> Gestion des Témoignages</h2>
+                    <button class="btn-add" id="openAddTemoignage"><i class="fas fa-plus"></i> Ajouter un témoignage</button>
+                </div>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>ID</th><th>Nom</th><th>Niveau</th><th>Note</th><th>Témoignage</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="temoignagesTableBody">
+                            <tr><td colspan="6" style="text-align:center;">Chargement...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Messages Section -->
             <div id="messagesSection" class="admin-section">
                 <div class="section-header-admin">
                     <h2><i class="fas fa-envelope"></i> Messages reçus</h2>
+                    <button class="btn-refresh" id="refreshMessages"><i class="fas fa-sync-alt"></i> Actualiser</button>
                 </div>
                 <div class="table-container">
                     <table class="admin-table">
                         <thead>
-                            <tr>
-                                <th>ID</th><th>Nom</th><th>Email</th><th>Téléphone</th><th>Message</th><th>Date</th><th>Statut</th><th>Actions</th>
-                            </tr>
+                            <tr><th>ID</th><th>Nom</th><th>Email</th><th>Téléphone</th><th>Message</th><th>Date</th><th>Statut</th><th>Actions</th></tr>
                         </thead>
-                        <tbody id="messagesTableBody"></tbody>
+                        <tbody id="messagesTableBody">
+                            <tr><td colspan="8" style="text-align:center;">Chargement...</td></tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -831,110 +888,134 @@
     <div id="crudModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <div class="modal-body" id="modalBody">
-                <!-- Contenu dynamique -->
-            </div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
 
     <script>
         // ============================================================
-        // BASE DE DONNEES - ADMIN
+        // CONFIGURATION
         // ============================================================
+        const API_BASE = '/php/';
+        let currentChart = null;
         
-        // Identifiants admin
-        const ADMIN_CREDENTIALS = {
-            username: "admin",
-            password: "nourtamuda2025"
-        };
-
-        // Données par défaut
-        const defaultAdminData = {
-            matieres: [
-                { id: 1, nom: "Mathématiques", niveau: ["Primaire", "Collège", "Lycée"], icone: "📐", description: "Algèbre, géométrie, analyse, probabilités" },
-                { id: 2, nom: "Physique-Chimie", niveau: ["Collège", "Lycée"], icone: "⚛️", description: "Mécanique, électricité, chimie" },
-                { id: 3, nom: "SVT", niveau: ["Collège", "Lycée"], icone: "🔬", description: "Biologie, géologie, écologie" },
-                { id: 4, nom: "Français", niveau: ["Primaire", "Collège", "Lycée"], icone: "📖", description: "Grammaire, conjugaison, expression" },
-                { id: 5, nom: "Arabe", niveau: ["Primaire", "Collège", "Lycée"], icone: "📜", description: "Langue et littérature arabes" },
-                { id: 6, nom: "Anglais", niveau: ["Primaire", "Collège", "Lycée"], icone: "🇬🇧", description: "Grammaire, vocabulaire, conversation" },
-                { id: 7, nom: "Histoire-Géo", niveau: ["Collège", "Lycée"], icone: "🗺️", description: "Histoire du Maroc, géographie" },
-                { id: 8, nom: "Informatique", niveau: ["Primaire", "Collège", "Lycée"], icone: "💻", description: "Algorithmique, programmation" },
-                { id: 9, nom: "Philosophie", niveau: ["Lycée"], icone: "🧠", description: "Préparation au BAC philo" }
-            ],
-            professeurs: [
-                { id: 1, nom: "Prof. Karim El Fassi", photo: "https://randomuser.me/api/portraits/men/32.jpg", matiere: "Mathématiques", experience: "12 ans", bio: "Agrégé de mathématiques." },
-                { id: 2, nom: "Prof. Salima Benjelloun", photo: "https://randomuser.me/api/portraits/women/68.jpg", matiere: "Physique-Chimie", experience: "9 ans", bio: "Doctorante en physique." },
-                { id: 3, nom: "Prof. Youssef El Mansouri", photo: "https://randomuser.me/api/portraits/men/45.jpg", matiere: "Français", experience: "15 ans", bio: "Ancien examinateur." },
-                { id: 4, nom: "Prof. Fatima Zahra", photo: "https://randomuser.me/api/portraits/women/44.jpg", matiere: "Arabe", experience: "10 ans", bio: "Spécialiste littérature." },
-                { id: 5, nom: "Prof. Mehdi Alaoui", photo: "https://randomuser.me/api/portraits/men/52.jpg", matiere: "Anglais", experience: "8 ans", bio: "Certifié IELTS." },
-                { id: 6, nom: "Prof. Noura Tazi", photo: "https://randomuser.me/api/portraits/women/22.jpg", matiere: "SVT", experience: "7 ans", bio: "Passionnée de biologie." }
-            ],
-            offres: [
-                { id: 1, nom: "Cours Individuel", prix: "300 MAD", duree: "2h/semaine", matieres: ["Toutes matières"], niveau: "Tous niveaux" },
-                { id: 2, nom: "Petit Groupe (3 él.)", prix: "200 MAD", duree: "2h/semaine", matieres: ["Toutes matières"], niveau: "Tous niveaux" },
-                { id: 3, nom: "Grand Groupe (8 él.)", prix: "150 MAD", duree: "2h/semaine", matieres: ["Toutes matières"], niveau: "Tous niveaux" },
-                { id: 4, nom: "Pack Intensif BAC", prix: "500 MAD", duree: "5h/semaine", matieres: ["Maths", "Physique", "SVT", "Français"], niveau: "Lycée" },
-                { id: 5, nom: "Cours à Domicile", prix: "400 MAD", duree: "2h/semaine", matieres: ["Toutes matières"], niveau: "Tous niveaux" }
-            ],
-            galerie: [
-                { id: 1, url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=300&h=200&fit=crop", titre: "Salle de cours" },
-                { id: 2, url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=300&h=200&fit=crop", titre: "Bibliothèque" },
-                { id: 3, url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=300&h=200&fit=crop", titre: "Salle informatique" },
-                { id: 4, url: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=300&h=200&fit=crop", titre: "Salle de réunion" },
-                { id: 5, url: "https://images.unsplash.com/photo-1562774053-701939374585?w=300&h=200&fit=crop", titre: "Cour extérieure" },
-                { id: 6, url: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=300&h=200&fit=crop", titre: "Laboratoire" }
-            ],
-            messages: []
-        };
-
-        // Initialisation localStorage
-        function initAdminDB() {
-            if (!localStorage.getItem('nourtamuda_matieres')) {
-                localStorage.setItem('nourtamuda_matieres', JSON.stringify(defaultAdminData.matieres));
-                localStorage.setItem('nourtamuda_professeurs', JSON.stringify(defaultAdminData.professeurs));
-                localStorage.setItem('nourtamuda_offres', JSON.stringify(defaultAdminData.offres));
-                localStorage.setItem('nourtamuda_galerie', JSON.stringify(defaultAdminData.galerie));
-                localStorage.setItem('nourtamuda_messages', JSON.stringify(defaultAdminData.messages));
+        // ============================================================
+        // SESSION MANAGEMENT
+        // ============================================================
+        async function checkSession() {
+            try {
+                const response = await fetch(API_BASE + 'admin_check_session.php');
+                const result = await response.json();
+                return result.success;
+            } catch (error) {
+                return false;
             }
         }
-
-        function getMatieresAdmin() { return JSON.parse(localStorage.getItem('nourtamuda_matieres') || '[]'); }
-        function getProfesseursAdmin() { return JSON.parse(localStorage.getItem('nourtamuda_professeurs') || '[]'); }
-        function getOffresAdmin() { return JSON.parse(localStorage.getItem('nourtamuda_offres') || '[]'); }
-        function getGalerieAdmin() { return JSON.parse(localStorage.getItem('nourtamuda_galerie') || '[]'); }
-        function getMessagesAdmin() { return JSON.parse(localStorage.getItem('nourtamuda_messages') || '[]'); }
-
-        function saveMatieresAdmin(data) { localStorage.setItem('nourtamuda_matieres', JSON.stringify(data)); }
-        function saveProfesseursAdmin(data) { localStorage.setItem('nourtamuda_professeurs', JSON.stringify(data)); }
-        function saveOffresAdmin(data) { localStorage.setItem('nourtamuda_offres', JSON.stringify(data)); }
-        function saveGalerieAdmin(data) { localStorage.setItem('nourtamuda_galerie', JSON.stringify(data)); }
-        function saveMessagesAdmin(data) { localStorage.setItem('nourtamuda_messages', JSON.stringify(data)); }
-
-        // ============================================================
-        // RENDU DES TABLEAUX
-        // ============================================================
         
-        let currentChart = null;
-
-        function updateStats() {
-            document.getElementById('statMatieres').textContent = getMatieresAdmin().length;
-            document.getElementById('statProfs').textContent = getProfesseursAdmin().length;
-            document.getElementById('statOffres').textContent = getOffresAdmin().length;
-            const nonLus = getMessagesAdmin().filter(m => !m.lu).length;
-            document.getElementById('statMessages').textContent = nonLus;
-            document.getElementById('msgBadge').textContent = nonLus;
+        async function login(username, password) {
+            try {
+                const response = await fetch(API_BASE + 'admin_login.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                return { success: false, message: 'Erreur de connexion' };
+            }
         }
-
-        function renderMatieresTable() {
-            const matieres = getMatieresAdmin();
+        
+        async function logout() {
+            try {
+                await fetch(API_BASE + 'admin_logout.php');
+                localStorage.removeItem('admin_logged_in');
+                document.getElementById('loginPage').style.display = 'flex';
+                document.getElementById('dashboardPage').style.display = 'none';
+            } catch (error) {
+                console.error('Erreur déconnexion:', error);
+            }
+        }
+        
+        // ============================================================
+        // DASHBOARD STATS
+        // ============================================================
+        async function loadDashboardStats() {
+            try {
+                const response = await fetch(API_BASE + 'admin_get_stats.php');
+                const result = await response.json();
+                if (result.success) {
+                    const data = result.data;
+                    document.getElementById('statMatieres').innerText = data.matieres || 0;
+                    document.getElementById('statProfs').innerText = data.professeurs || 0;
+                    document.getElementById('statOffres').innerText = data.offres || 0;
+                    document.getElementById('statMessagesNonLus').innerText = data.messages_non_lus || 0;
+                    document.getElementById('msgBadge').innerText = data.messages_non_lus || 0;
+                    
+                    // Recent messages
+                    const recentHtml = (data.derniers_messages || []).slice(0, 5).map(m => `
+                        <tr>
+                            <td>${escapeHtml(m.nom)}</td>
+                            <td>${escapeHtml(m.email)}</td>
+                            <td>${escapeHtml(m.message.substring(0, 50))}...</td>
+                            <td>${new Date(m.date).toLocaleDateString('fr-FR')}</td>
+                            <td>${m.lu ? '<span class="status-lu">Lu</span>' : '<span class="status-non-lu">Non lu</span>'}</td>
+                        </tr>
+                    `).join('');
+                    document.getElementById('recentMessagesList').innerHTML = recentHtml || '<tr><td colspan="5">Aucun message</td></tr>';
+                    
+                    // Chart data
+                    if (currentChart) currentChart.destroy();
+                    const ctx = document.getElementById('activityChart').getContext('2d');
+                    currentChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Sept', 'Oct', 'Nov', 'Déc', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
+                            datasets: [{
+                                label: 'Inscriptions',
+                                data: [12, 19, 15, 17, 22, 25, 30, 28, 35, 42],
+                                borderColor: '#C9A84C',
+                                backgroundColor: 'rgba(201, 168, 76, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            }]
+                        },
+                        options: { responsive: true, maintainAspectRatio: true }
+                    });
+                }
+            } catch (error) {
+                console.error('Erreur chargement stats:', error);
+            }
+        }
+        
+        // ============================================================
+        // MATIERES CRUD
+        // ============================================================
+        async function loadMatieres() {
+            try {
+                const response = await fetch(API_BASE + 'get_matieres.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderMatieresTable(result.data);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+        
+        function renderMatieresTable(matieres) {
             const tbody = document.getElementById('matieresTableBody');
+            if (!matieres || matieres.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Aucune matière</td></tr>';
+                return;
+            }
             tbody.innerHTML = matieres.map(m => `
                 <tr>
                     <td>${m.id}</td>
-                    <td style="font-size:24px">${m.icone}</td>
-                    <td><strong>${m.nom}</strong></td>
-                    <td>${m.niveau.join(', ')}</td>
-                    <td>${m.description.substring(0, 50)}...</td>
+                    <td style="font-size:24px">${escapeHtml(m.icone || '📚')}</td>
+                    <td><strong>${escapeHtml(m.nom)}</strong></td>
+                    <td>${escapeHtml(m.niveaux || '')}</td>
+                    <td>${escapeHtml((m.description || '').substring(0, 50))}...</td>
                     <td>
                         <button class="btn-edit" onclick="editMatiere(${m.id})"><i class="fas fa-edit"></i></button>
                         <button class="btn-delete" onclick="deleteMatiere(${m.id})"><i class="fas fa-trash"></i></button>
@@ -942,18 +1023,92 @@
                 </tr>
             `).join('');
         }
-
-        function renderProfesseursTable() {
-            const profs = getProfesseursAdmin();
+        
+        window.editMatiere = async (id) => {
+            const response = await fetch(API_BASE + 'get_matieres.php');
+            const result = await response.json();
+            const matiere = result.success ? result.data.find(m => m.id === id) : null;
+            if (!matiere) return;
+            
+            openModal(`
+                <h3>✏️ Modifier la matière</h3>
+                <div class="form-group-modal"><label>Nom</label><input type="text" id="editNom" value="${escapeHtml(matiere.nom)}"></div>
+                <div class="form-group-modal"><label>Icône (emoji)</label><input type="text" id="editIcone" value="${escapeHtml(matiere.icone || '📚')}"></div>
+                <div class="form-group-modal"><label>Niveaux</label><input type="text" id="editNiveaux" value="${escapeHtml(matiere.niveaux || '')}"></div>
+                <div class="form-group-modal"><label>Description</label><textarea id="editDescription" rows="3">${escapeHtml(matiere.description || '')}</textarea></div>
+                <button class="btn-submit" onclick="saveMatiere(${id})">Enregistrer</button>
+            `);
+        };
+        
+        window.saveMatiere = async (id) => {
+            const data = {
+                id: id,
+                nom: document.getElementById('editNom').value,
+                icone: document.getElementById('editIcone').value,
+                niveaux: document.getElementById('editNiveaux').value,
+                description: document.getElementById('editDescription').value
+            };
+            
+            const response = await fetch(API_BASE + 'admin_edit_matiere.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            if (result.success) {
+                closeModal();
+                loadMatieres();
+                loadDashboardStats();
+                showNotification('Matière modifiée', 'success');
+            } else {
+                showNotification(result.message || 'Erreur', 'error');
+            }
+        };
+        
+        window.deleteMatiere = async (id) => {
+            if (!confirm('Supprimer cette matière ?')) return;
+            const response = await fetch(API_BASE + 'admin_delete_matiere.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            });
+            const result = await response.json();
+            if (result.success) {
+                loadMatieres();
+                loadDashboardStats();
+                showNotification('Matière supprimée', 'success');
+            }
+        };
+        
+        // ============================================================
+        // PROFESSEURS CRUD
+        // ============================================================
+        async function loadProfesseurs() {
+            try {
+                const response = await fetch(API_BASE + 'get_professeurs.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderProfesseursTable(result.data);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+        
+        function renderProfesseursTable(profs) {
             const tbody = document.getElementById('professeursTableBody');
+            if (!profs || profs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Aucun professeur</td></tr>';
+                return;
+            }
             tbody.innerHTML = profs.map(p => `
                 <tr>
                     <td>${p.id}</td>
-                    <td><img src="${p.photo}" class="photo-preview" onerror="this.src='https://randomuser.me/api/portraits/lego/1.jpg'"></td>
-                    <td><strong>${p.nom}</strong></td>
-                    <td>${p.matiere}</td>
-                    <td>${p.experience}</td>
-                    <td>${p.bio.substring(0, 40)}...</td>
+                    <td><img src="${p.photo || 'https://randomuser.me/api/portraits/lego/1.jpg'}" class="photo-preview"></td>
+                    <td><strong>${escapeHtml(p.nom)}</strong></td>
+                    <td>${escapeHtml(p.matiere_nom || p.matiere || '')}</td>
+                    <td>${escapeHtml(p.experience || '')}</td>
+                    <td>${escapeHtml((p.bio || '').substring(0, 40))}...</td>
                     <td>
                         <button class="btn-edit" onclick="editProfesseur(${p.id})"><i class="fas fa-edit"></i></button>
                         <button class="btn-delete" onclick="deleteProfesseur(${p.id})"><i class="fas fa-trash"></i></button>
@@ -961,18 +1116,92 @@
                 </tr>
             `).join('');
         }
-
-        function renderOffresTable() {
-            const offres = getOffresAdmin();
+        
+        window.editProfesseur = async (id) => {
+            const response = await fetch(API_BASE + 'get_professeurs.php');
+            const result = await response.json();
+            const prof = result.success ? result.data.find(p => p.id === id) : null;
+            if (!prof) return;
+            
+            openModal(`
+                <h3>✏️ Modifier le professeur</h3>
+                <div class="form-group-modal"><label>Nom</label><input type="text" id="editNom" value="${escapeHtml(prof.nom)}"></div>
+                <div class="form-group-modal"><label>Photo URL</label><input type="text" id="editPhoto" value="${escapeHtml(prof.photo || '')}"></div>
+                <div class="form-group-modal"><label>Matière</label><input type="text" id="editMatiere" value="${escapeHtml(prof.matiere_nom || prof.matiere || '')}"></div>
+                <div class="form-group-modal"><label>Expérience</label><input type="text" id="editExperience" value="${escapeHtml(prof.experience || '')}"></div>
+                <div class="form-group-modal"><label>Bio</label><textarea id="editBio" rows="3">${escapeHtml(prof.bio || '')}</textarea></div>
+                <button class="btn-submit" onclick="saveProfesseur(${id})">Enregistrer</button>
+            `);
+        };
+        
+        window.saveProfesseur = async (id) => {
+            const data = {
+                id: id,
+                nom: document.getElementById('editNom').value,
+                photo: document.getElementById('editPhoto').value,
+                matiere: document.getElementById('editMatiere').value,
+                experience: document.getElementById('editExperience').value,
+                bio: document.getElementById('editBio').value
+            };
+            
+            const response = await fetch(API_BASE + 'admin_edit_professeur.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            if (result.success) {
+                closeModal();
+                loadProfesseurs();
+                loadDashboardStats();
+                showNotification('Professeur modifié', 'success');
+            }
+        };
+        
+        window.deleteProfesseur = async (id) => {
+            if (!confirm('Supprimer ce professeur ?')) return;
+            const response = await fetch(API_BASE + 'admin_delete_professeur.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            });
+            const result = await response.json();
+            if (result.success) {
+                loadProfesseurs();
+                loadDashboardStats();
+                showNotification('Professeur supprimé', 'success');
+            }
+        };
+        
+        // ============================================================
+        // OFFRES CRUD
+        // ============================================================
+        async function loadOffres() {
+            try {
+                const response = await fetch(API_BASE + 'get_offres.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderOffresTable(result.data);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+        
+        function renderOffresTable(offres) {
             const tbody = document.getElementById('offresTableBody');
+            if (!offres || offres.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Aucune offre</td></tr>';
+                return;
+            }
             tbody.innerHTML = offres.map(o => `
                 <tr>
                     <td>${o.id}</td>
-                    <td><strong>${o.nom}</strong></td>
-                    <td>${o.prix}</td>
-                    <td>${o.duree}</td>
-                    <td>${o.matieres.join(', ')}</td>
-                    <td>${o.niveau}</td>
+                    <td><strong>${escapeHtml(o.nom)}</strong></td>
+                    <td>${escapeHtml(o.prix)}</td>
+                    <td>${escapeHtml(o.duree || '')}</td>
+                    <td>${escapeHtml(o.matieres || '')}</td>
+                    <td>${escapeHtml(o.niveau || '')}</td>
                     <td>
                         <button class="btn-edit" onclick="editOffre(${o.id})"><i class="fas fa-edit"></i></button>
                         <button class="btn-delete" onclick="deleteOffre(${o.id})"><i class="fas fa-trash"></i></button>
@@ -980,237 +1209,264 @@
                 </tr>
             `).join('');
         }
-
-        function renderGalerieAdmin() {
-            const galerie = getGalerieAdmin();
+        
+        window.editOffre = async (id) => {
+            const response = await fetch(API_BASE + 'get_offres.php');
+            const result = await response.json();
+            const offre = result.success ? result.data.find(o => o.id === id) : null;
+            if (!offre) return;
+            
+            openModal(`
+                <h3>✏️ Modifier l'offre</h3>
+                <div class="form-group-modal"><label>Nom</label><input type="text" id="editNom" value="${escapeHtml(offre.nom)}"></div>
+                <div class="form-group-modal"><label>Prix</label><input type="text" id="editPrix" value="${escapeHtml(offre.prix)}"></div>
+                <div class="form-group-modal"><label>Durée</label><input type="text" id="editDuree" value="${escapeHtml(offre.duree || '')}"></div>
+                <div class="form-group-modal"><label>Matières</label><input type="text" id="editMatieres" value="${escapeHtml(offre.matieres || '')}"></div>
+                <div class="form-group-modal"><label>Niveau</label><input type="text" id="editNiveau" value="${escapeHtml(offre.niveau || '')}"></div>
+                <div class="form-group-modal"><label>Description</label><textarea id="editDescription" rows="3">${escapeHtml(offre.description || '')}</textarea></div>
+                <button class="btn-submit" onclick="saveOffre(${id})">Enregistrer</button>
+            `);
+        };
+        
+        window.saveOffre = async (id) => {
+            const data = {
+                id: id,
+                nom: document.getElementById('editNom').value,
+                prix: document.getElementById('editPrix').value,
+                duree: document.getElementById('editDuree').value,
+                matieres: document.getElementById('editMatieres').value,
+                niveau: document.getElementById('editNiveau').value,
+                description: document.getElementById('editDescription').value
+            };
+            
+            const response = await fetch(API_BASE + 'admin_edit_offre.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            if (result.success) {
+                closeModal();
+                loadOffres();
+                showNotification('Offre modifiée', 'success');
+            }
+        };
+        
+        window.deleteOffre = async (id) => {
+            if (!confirm('Supprimer cette offre ?')) return;
+            const response = await fetch(API_BASE + 'admin_delete_offre.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            });
+            const result = await response.json();
+            if (result.success) {
+                loadOffres();
+                showNotification('Offre supprimée', 'success');
+            }
+        };
+        
+        // ============================================================
+        // GALERIE CRUD
+        // ============================================================
+        async function loadGalerie() {
+            try {
+                const response = await fetch(API_BASE + 'get_galerie.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderGalerieAdmin(result.data);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+        
+        function renderGalerieAdmin(images) {
             const grid = document.getElementById('galerieAdminGrid');
-            grid.innerHTML = galerie.map(g => `
+            if (!images || images.length === 0) {
+                grid.innerHTML = '<div style="text-align:center; width:100%;">Aucune image</div>';
+                return;
+            }
+            grid.innerHTML = images.map(img => `
                 <div class="galerie-admin-item">
-                    <img src="${g.url}" alt="${g.titre}" onerror="this.src='https://placehold.co/300x200?text=Image+non+trouvée'">
+                    <img src="${img.url}" alt="${escapeHtml(img.titre || '')}" onerror="this.src='https://placehold.co/300x200?text=Image'">
                     <div class="galerie-admin-info">
-                        <p>${g.titre}</p>
-                        <button class="btn-delete" onclick="deleteImage(${g.id})"><i class="fas fa-trash"></i> Supprimer</button>
+                        <p>${escapeHtml(img.titre || '')}</p>
+                        <button class="btn-delete" onclick="deleteImage(${img.id})"><i class="fas fa-trash"></i> Supprimer</button>
                     </div>
                 </div>
             `).join('');
         }
-
-        function renderMessagesTable() {
-            const messages = getMessagesAdmin();
+        
+        window.deleteImage = async (id) => {
+            if (!confirm('Supprimer cette image ?')) return;
+            const response = await fetch(API_BASE + 'admin_delete_image.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            });
+            const result = await response.json();
+            if (result.success) {
+                loadGalerie();
+                showNotification('Image supprimée', 'success');
+            }
+        };
+        
+        // ============================================================
+        // TEMOIGNAGES CRUD
+        // ============================================================
+        async function loadTemoignages() {
+            try {
+                const response = await fetch(API_BASE + 'get_temoignages.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderTemoignagesTable(result.data);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+        
+        function renderTemoignagesTable(temoignages) {
+            const tbody = document.getElementById('temoignagesTableBody');
+            if (!temoignages || temoignages.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Aucun témoignage</td></tr>';
+                return;
+            }
+            tbody.innerHTML = temoignages.map(t => `
+                <tr>
+                    <td>${t.id}</td>
+                    <td><strong>${escapeHtml(t.nom)}</strong></td>
+                    <td>${escapeHtml(t.niveau || '')}</td>
+                    <td>${'★'.repeat(t.note || 5)}</td>
+                    <td>${escapeHtml((t.texte || '').substring(0, 60))}...</td>
+                    <td>
+                        <button class="btn-edit" onclick="editTemoignage(${t.id})"><i class="fas fa-edit"></i></button>
+                        <button class="btn-delete" onclick="deleteTemoignage(${t.id})"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        window.deleteTemoignage = async (id) => {
+            if (!confirm('Supprimer ce témoignage ?')) return;
+            const response = await fetch(API_BASE + 'admin_delete_temoignage.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            });
+            const result = await response.json();
+            if (result.success) {
+                loadTemoignages();
+                showNotification('Témoignage supprimé', 'success');
+            }
+        };
+        
+        // ============================================================
+        // MESSAGES
+        // ============================================================
+        async function loadMessages() {
+            try {
+                const response = await fetch(API_BASE + 'admin_get_messages.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderMessagesTable(result.data);
+                    const nonLus = (result.data || []).filter(m => !m.lu).length;
+                    document.getElementById('statMessagesNonLus').innerText = nonLus;
+                    document.getElementById('msgBadge').innerText = nonLus;
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+        
+        function renderMessagesTable(messages) {
             const tbody = document.getElementById('messagesTableBody');
+            if (!messages || messages.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">Aucun message</td></tr>';
+                return;
+            }
             tbody.innerHTML = messages.map(m => `
                 <tr>
                     <td>${m.id}</td>
-                    <td><strong>${m.nom}</strong></td>
-                    <td>${m.email}</td>
-                    <td>${m.tel}</td>
-                    <td>${m.message.substring(0, 50)}...</td>
+                    <td><strong>${escapeHtml(m.nom)}</strong></td>
+                    <td>${escapeHtml(m.email)}</td>
+                    <td>${escapeHtml(m.telephone || '')}</td>
+                    <td>${escapeHtml((m.message || '').substring(0, 50))}...</td>
                     <td>${new Date(m.date).toLocaleDateString('fr-FR')}</td>
                     <td>${m.lu ? '<span class="status-lu">Lu</span>' : '<span class="status-non-lu">Non lu</span>'}</td>
                     <td>
-                        ${!m.lu ? `<button class="btn-marquer-lu" onclick="marquerLu(${m.id})">Marquer lu</button>` : ''}
+                        ${!m.lu ? `<button class="btn-marquer-lu" onclick="markMessageRead(${m.id})">Marquer lu</button>` : ''}
                         <button class="btn-delete" onclick="deleteMessage(${m.id})"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
             `).join('');
         }
-
-        // ============================================================
-        // CRUD OPERATIONS
-        // ============================================================
         
-        window.editMatiere = (id) => {
-            const matieres = getMatieresAdmin();
-            const matiere = matieres.find(m => m.id === id);
-            if (!matiere) return;
-            openModal(`
-                <h3>✏️ Modifier la matière</h3>
-                <div class="form-group-modal">
-                    <label>Nom</label>
-                    <input type="text" id="editNom" value="${matiere.nom}">
-                </div>
-                <div class="form-group-modal">
-                    <label>Icône (emoji)</label>
-                    <input type="text" id="editIcone" value="${matiere.icone}">
-                </div>
-                <div class="form-group-modal">
-                    <label>Niveaux (séparés par virgule)</label>
-                    <input type="text" id="editNiveaux" value="${matiere.niveau.join(', ')}">
-                </div>
-                <div class="form-group-modal">
-                    <label>Description</label>
-                    <textarea id="editDescription" rows="3">${matiere.description}</textarea>
-                </div>
-                <button class="btn-submit" onclick="saveMatiereEdit(${id})">Enregistrer</button>
-            `);
-        };
-
-        window.saveMatiereEdit = (id) => {
-            const matieres = getMatieresAdmin();
-            const index = matieres.findIndex(m => m.id === id);
-            if (index !== -1) {
-                matieres[index].nom = document.getElementById('editNom').value;
-                matieres[index].icone = document.getElementById('editIcone').value;
-                matieres[index].niveau = document.getElementById('editNiveaux').value.split(',').map(s => s.trim());
-                matieres[index].description = document.getElementById('editDescription').value;
-                saveMatieresAdmin(matieres);
-                renderMatieresTable();
-                closeModal();
-                updateStats();
+        window.markMessageRead = async (id) => {
+            const response = await fetch(API_BASE + 'admin_mark_message_read.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            });
+            const result = await response.json();
+            if (result.success) {
+                loadMessages();
+                loadDashboardStats();
+                showNotification('Message marqué comme lu', 'success');
             }
         };
-
-        window.deleteMatiere = (id) => {
-            if (confirm('Supprimer cette matière ?')) {
-                let matieres = getMatieresAdmin();
-                matieres = matieres.filter(m => m.id !== id);
-                saveMatieresAdmin(matieres);
-                renderMatieresTable();
-                updateStats();
+        
+        window.deleteMessage = async (id) => {
+            if (!confirm('Supprimer ce message ?')) return;
+            const response = await fetch(API_BASE + 'admin_delete_message.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            });
+            const result = await response.json();
+            if (result.success) {
+                loadMessages();
+                loadDashboardStats();
+                showNotification('Message supprimé', 'success');
             }
         };
-
-        window.editProfesseur = (id) => {
-            const profs = getProfesseursAdmin();
-            const prof = profs.find(p => p.id === id);
-            if (!prof) return;
-            openModal(`
-                <h3>✏️ Modifier le professeur</h3>
-                <div class="form-group-modal"><label>Nom</label><input type="text" id="editNom" value="${prof.nom}"></div>
-                <div class="form-group-modal"><label>Photo (URL)</label><input type="text" id="editPhoto" value="${prof.photo}"></div>
-                <div class="form-group-modal"><label>Matière</label><input type="text" id="editMatiere" value="${prof.matiere}"></div>
-                <div class="form-group-modal"><label>Expérience</label><input type="text" id="editExperience" value="${prof.experience}"></div>
-                <div class="form-group-modal"><label>Bio</label><textarea id="editBio" rows="3">${prof.bio}</textarea></div>
-                <button class="btn-submit" onclick="saveProfesseurEdit(${id})">Enregistrer</button>
-            `);
-        };
-
-        window.saveProfesseurEdit = (id) => {
-            const profs = getProfesseursAdmin();
-            const index = profs.findIndex(p => p.id === id);
-            if (index !== -1) {
-                profs[index].nom = document.getElementById('editNom').value;
-                profs[index].photo = document.getElementById('editPhoto').value;
-                profs[index].matiere = document.getElementById('editMatiere').value;
-                profs[index].experience = document.getElementById('editExperience').value;
-                profs[index].bio = document.getElementById('editBio').value;
-                saveProfesseursAdmin(profs);
-                renderProfesseursTable();
-                closeModal();
-                updateStats();
-            }
-        };
-
-        window.deleteProfesseur = (id) => {
-            if (confirm('Supprimer ce professeur ?')) {
-                let profs = getProfesseursAdmin();
-                profs = profs.filter(p => p.id !== id);
-                saveProfesseursAdmin(profs);
-                renderProfesseursTable();
-                updateStats();
-            }
-        };
-
-        window.editOffre = (id) => {
-            const offres = getOffresAdmin();
-            const offre = offres.find(o => o.id === id);
-            if (!offre) return;
-            openModal(`
-                <h3>✏️ Modifier l'offre</h3>
-                <div class="form-group-modal"><label>Nom</label><input type="text" id="editNom" value="${offre.nom}"></div>
-                <div class="form-group-modal"><label>Prix</label><input type="text" id="editPrix" value="${offre.prix}"></div>
-                <div class="form-group-modal"><label>Durée</label><input type="text" id="editDuree" value="${offre.duree}"></div>
-                <div class="form-group-modal"><label>Matières (séparées par virgule)</label><input type="text" id="editMatieres" value="${offre.matieres.join(', ')}"></div>
-                <div class="form-group-modal"><label>Niveau</label><input type="text" id="editNiveau" value="${offre.niveau}"></div>
-                <button class="btn-submit" onclick="saveOffreEdit(${id})">Enregistrer</button>
-            `);
-        };
-
-        window.saveOffreEdit = (id) => {
-            const offres = getOffresAdmin();
-            const index = offres.findIndex(o => o.id === id);
-            if (index !== -1) {
-                offres[index].nom = document.getElementById('editNom').value;
-                offres[index].prix = document.getElementById('editPrix').value;
-                offres[index].duree = document.getElementById('editDuree').value;
-                offres[index].matieres = document.getElementById('editMatieres').value.split(',').map(s => s.trim());
-                offres[index].niveau = document.getElementById('editNiveau').value;
-                saveOffresAdmin(offres);
-                renderOffresTable();
-                closeModal();
-                updateStats();
-            }
-        };
-
-        window.deleteOffre = (id) => {
-            if (confirm('Supprimer cette offre ?')) {
-                let offres = getOffresAdmin();
-                offres = offres.filter(o => o.id !== id);
-                saveOffresAdmin(offres);
-                renderOffresTable();
-                updateStats();
-            }
-        };
-
-        window.deleteImage = (id) => {
-            if (confirm('Supprimer cette image ?')) {
-                let galerie = getGalerieAdmin();
-                galerie = galerie.filter(g => g.id !== id);
-                saveGalerieAdmin(galerie);
-                renderGalerieAdmin();
-                updateStats();
-            }
-        };
-
-        window.marquerLu = (id) => {
-            let messages = getMessagesAdmin();
-            const msg = messages.find(m => m.id === id);
-            if (msg) {
-                msg.lu = true;
-                saveMessagesAdmin(messages);
-                renderMessagesTable();
-                updateStats();
-            }
-        };
-
-        window.deleteMessage = (id) => {
-            if (confirm('Supprimer ce message ?')) {
-                let messages = getMessagesAdmin();
-                messages = messages.filter(m => m.id !== id);
-                saveMessagesAdmin(messages);
-                renderMessagesTable();
-                updateStats();
-            }
-        };
-
-        // Ajouts
+        
+        // ============================================================
+        // ADD MODALS
+        // ============================================================
         document.getElementById('openAddMatiere')?.addEventListener('click', () => {
             openModal(`
                 <h3>➕ Ajouter une matière</h3>
                 <div class="form-group-modal"><label>Nom</label><input type="text" id="newNom"></div>
                 <div class="form-group-modal"><label>Icône (emoji)</label><input type="text" id="newIcone" value="📚"></div>
-                <div class="form-group-modal"><label>Niveaux (séparés par virgule)</label><input type="text" id="newNiveaux" value="Primaire, Collège, Lycée"></div>
+                <div class="form-group-modal"><label>Niveaux</label><input type="text" id="newNiveaux" value="Primaire,Collège,Lycée"></div>
                 <div class="form-group-modal"><label>Description</label><textarea id="newDescription" rows="3"></textarea></div>
                 <button class="btn-submit" onclick="addMatiere()">Ajouter</button>
             `);
         });
-
-        window.addMatiere = () => {
-            const matieres = getMatieresAdmin();
-            const newId = Math.max(...matieres.map(m => m.id), 0) + 1;
-            matieres.push({
-                id: newId,
+        
+        window.addMatiere = async () => {
+            const data = {
                 nom: document.getElementById('newNom').value,
                 icone: document.getElementById('newIcone').value,
-                niveau: document.getElementById('newNiveaux').value.split(',').map(s => s.trim()),
+                niveaux: document.getElementById('newNiveaux').value,
                 description: document.getElementById('newDescription').value
+            };
+            const response = await fetch(API_BASE + 'admin_add_matiere.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             });
-            saveMatieresAdmin(matieres);
-            renderMatieresTable();
-            closeModal();
-            updateStats();
+            const result = await response.json();
+            if (result.success) {
+                closeModal();
+                loadMatieres();
+                loadDashboardStats();
+                showNotification('Matière ajoutée', 'success');
+            }
         };
-
+        
         document.getElementById('openAddProfesseur')?.addEventListener('click', () => {
             openModal(`
                 <h3>➕ Ajouter un professeur</h3>
@@ -1222,53 +1478,64 @@
                 <button class="btn-submit" onclick="addProfesseur()">Ajouter</button>
             `);
         });
-
-        window.addProfesseur = () => {
-            const profs = getProfesseursAdmin();
-            const newId = Math.max(...profs.map(p => p.id), 0) + 1;
-            profs.push({
-                id: newId,
+        
+        window.addProfesseur = async () => {
+            const data = {
                 nom: document.getElementById('newNom').value,
                 photo: document.getElementById('newPhoto').value,
                 matiere: document.getElementById('newMatiere').value,
                 experience: document.getElementById('newExperience').value,
                 bio: document.getElementById('newBio').value
+            };
+            const response = await fetch(API_BASE + 'admin_add_professeur.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             });
-            saveProfesseursAdmin(profs);
-            renderProfesseursTable();
-            closeModal();
-            updateStats();
+            const result = await response.json();
+            if (result.success) {
+                closeModal();
+                loadProfesseurs();
+                loadDashboardStats();
+                showNotification('Professeur ajouté', 'success');
+            }
         };
-
+        
         document.getElementById('openAddOffre')?.addEventListener('click', () => {
             openModal(`
                 <h3>➕ Ajouter une offre</h3>
                 <div class="form-group-modal"><label>Nom</label><input type="text" id="newNom"></div>
                 <div class="form-group-modal"><label>Prix</label><input type="text" id="newPrix"></div>
-                <div class="form-group-modal"><label>Durée</label><input type="text" id="newDuree"></div>
-                <div class="form-group-modal"><label>Matières (séparées par virgule)</label><input type="text" id="newMatieres"></div>
-                <div class="form-group-modal"><label>Niveau</label><input type="text" id="newNiveau"></div>
+                <div class="form-group-modal"><label>Durée</label><input type="text" id="newDuree" value="2h/semaine"></div>
+                <div class="form-group-modal"><label>Matières</label><input type="text" id="newMatieres" value="Toutes matières"></div>
+                <div class="form-group-modal"><label>Niveau</label><input type="text" id="newNiveau" value="Tous niveaux"></div>
+                <div class="form-group-modal"><label>Description</label><textarea id="newDescription" rows="3"></textarea></div>
                 <button class="btn-submit" onclick="addOffre()">Ajouter</button>
             `);
         });
-
-        window.addOffre = () => {
-            const offres = getOffresAdmin();
-            const newId = Math.max(...offres.map(o => o.id), 0) + 1;
-            offres.push({
-                id: newId,
+        
+        window.addOffre = async () => {
+            const data = {
                 nom: document.getElementById('newNom').value,
                 prix: document.getElementById('newPrix').value,
                 duree: document.getElementById('newDuree').value,
-                matieres: document.getElementById('newMatieres').value.split(',').map(s => s.trim()),
-                niveau: document.getElementById('newNiveau').value
+                matieres: document.getElementById('newMatieres').value,
+                niveau: document.getElementById('newNiveau').value,
+                description: document.getElementById('newDescription').value
+            };
+            const response = await fetch(API_BASE + 'admin_add_offre.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             });
-            saveOffresAdmin(offres);
-            renderOffresTable();
-            closeModal();
-            updateStats();
+            const result = await response.json();
+            if (result.success) {
+                closeModal();
+                loadOffres();
+                showNotification('Offre ajoutée', 'success');
+            }
         };
-
+        
         document.getElementById('openAddImage')?.addEventListener('click', () => {
             openModal(`
                 <h3>➕ Ajouter une image</h3>
@@ -1277,24 +1544,86 @@
                 <button class="btn-submit" onclick="addImage()">Ajouter</button>
             `);
         });
-
-        window.addImage = () => {
-            const galerie = getGalerieAdmin();
-            const newId = Math.max(...galerie.map(g => g.id), 0) + 1;
-            galerie.push({
-                id: newId,
+        
+        window.addImage = async () => {
+            const data = {
                 url: document.getElementById('newUrl').value,
                 titre: document.getElementById('newTitre').value
+            };
+            const response = await fetch(API_BASE + 'admin_add_image.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             });
-            saveGalerieAdmin(galerie);
-            renderGalerieAdmin();
-            closeModal();
-            updateStats();
+            const result = await response.json();
+            if (result.success) {
+                closeModal();
+                loadGalerie();
+                showNotification('Image ajoutée', 'success');
+            }
         };
-
+        
+        document.getElementById('openAddTemoignage')?.addEventListener('click', () => {
+            openModal(`
+                <h3>➕ Ajouter un témoignage</h3>
+                <div class="form-group-modal"><label>Nom</label><input type="text" id="newNom"></div>
+                <div class="form-group-modal"><label>Niveau</label><input type="text" id="newNiveau"></div>
+                <div class="form-group-modal"><label>Note (1-5)</label><select id="newNote"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+                <div class="form-group-modal"><label>Témoignage</label><textarea id="newTexte" rows="3"></textarea></div>
+                <button class="btn-submit" onclick="addTemoignage()">Ajouter</button>
+            `);
+        });
+        
+        window.addTemoignage = async () => {
+            const data = {
+                nom: document.getElementById('newNom').value,
+                niveau: document.getElementById('newNiveau').value,
+                note: document.getElementById('newNote').value,
+                texte: document.getElementById('newTexte').value
+            };
+            const response = await fetch(API_BASE + 'admin_add_temoignage.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            if (result.success) {
+                closeModal();
+                loadTemoignages();
+                showNotification('Témoignage ajouté', 'success');
+            }
+        };
+        
         // ============================================================
-        // MODAL FUNCTIONS
+        // UTILITIES
         // ============================================================
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+        
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#10B981' : '#EF4444'};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                z-index: 3000;
+                animation: fadeInUp 0.3s ease;
+            `;
+            notification.innerHTML = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
         
         const modal = document.getElementById('crudModal');
         const modalBody = document.getElementById('modalBody');
@@ -1309,44 +1638,16 @@
         }
         
         document.querySelector('.close-modal')?.addEventListener('click', closeModal);
-        modal?.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
+        modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        
+        document.getElementById('refreshMessages')?.addEventListener('click', () => {
+            loadMessages();
+            showNotification('Messages actualisés', 'success');
         });
-
-        // ============================================================
-        // GRAPHIQUE
-        // ============================================================
         
-        function initChart() {
-            const ctx = document.getElementById('activityChart')?.getContext('2d');
-            if (ctx) {
-                if (currentChart) currentChart.destroy();
-                currentChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Sept', 'Oct', 'Nov', 'Déc', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
-                        datasets: [{
-                            label: 'Nouveaux inscrits',
-                            data: [12, 19, 15, 17, 22, 25, 30, 28, 35, 42],
-                            borderColor: '#C9A84C',
-                            backgroundColor: 'rgba(201, 168, 76, 0.1)',
-                            tension: 0.4,
-                            fill: true
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: { legend: { position: 'top' } }
-                    }
-                });
-            }
-        }
-
         // ============================================================
-        // NAVIGATION & AUTH
+        // NAVIGATION
         // ============================================================
-        
         function switchSection(sectionId) {
             document.querySelectorAll('.admin-section').forEach(section => {
                 section.classList.remove('active');
@@ -1355,75 +1656,82 @@
             
             document.querySelectorAll('.sidebar-link').forEach(link => {
                 link.classList.remove('active');
-                if (link.dataset.section === sectionId) {
+                if (link.dataset && link.dataset.section === sectionId) {
                     link.classList.add('active');
                 }
             });
+            
+            // Load section data
+            if (sectionId === 'matieres') loadMatieres();
+            if (sectionId === 'professeurs') loadProfesseurs();
+            if (sectionId === 'offres') loadOffres();
+            if (sectionId === 'galerie') loadGalerie();
+            if (sectionId === 'temoignages') loadTemoignages();
+            if (sectionId === 'messages') loadMessages();
         }
         
         document.querySelectorAll('.sidebar-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (link.id === 'logoutBtnAdmin') return;
-                e.preventDefault();
-                const section = link.dataset.section;
-                if (section) switchSection(section);
-            });
-        });
-        
-        // Login
-        document.getElementById('loginFormAdmin')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('adminUsername').value;
-            const password = document.getElementById('adminPassword').value;
-            
-            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-                localStorage.setItem('admin_logged_in', 'true');
-                document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('dashboardPage').style.display = 'block';
-                initChart();
-                updateStats();
-                renderMatieresTable();
-                renderProfesseursTable();
-                renderOffresTable();
-                renderGalerieAdmin();
-                renderMessagesTable();
-            } else {
-                document.getElementById('loginError').textContent = 'Identifiants incorrects';
+            if (link.dataset && link.dataset.section) {
+                link.addEventListener('click', () => {
+                    switchSection(link.dataset.section);
+                });
             }
         });
         
-        document.getElementById('logoutBtnAdmin')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('admin_logged_in');
-            document.getElementById('loginPage').style.display = 'flex';
-            document.getElementById('dashboardPage').style.display = 'none';
-        });
-        
-        // Vérifier session
-        if (localStorage.getItem('admin_logged_in') === 'true') {
-            document.getElementById('loginPage').style.display = 'none';
-            document.getElementById('dashboardPage').style.display = 'block';
-            initChart();
-            updateStats();
-            renderMatieresTable();
-            renderProfesseursTable();
-            renderOffresTable();
-            renderGalerieAdmin();
-            renderMessagesTable();
-        }
-        
         // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const adminSidebar = document.getElementById('adminSidebar');
-        mobileMenuBtn?.addEventListener('click', () => {
-            adminSidebar.classList.toggle('open');
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+            document.getElementById('adminSidebar').classList.toggle('open');
         });
         
-        // Initialisation DB
-        initAdminDB();
+        // Login
+        document.getElementById('loginFormAdmin')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            const loginBtn = document.getElementById('loginBtn');
+            
+            loginBtn.innerHTML = '<span class="loader-small"></span> Connexion...';
+            loginBtn.disabled = true;
+            
+            const result = await login(username, password);
+            if (result.success) {
+                localStorage.setItem('admin_logged_in', 'true');
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dashboardPage').style.display = 'block';
+                loadDashboardStats();
+                loadMatieres();
+                loadProfesseurs();
+                loadOffres();
+                loadGalerie();
+                loadTemoignages();
+                loadMessages();
+            } else {
+                document.getElementById('loginError').textContent = result.message || 'Identifiants incorrects';
+            }
+            loginBtn.innerHTML = 'Connexion <i class="fas fa-arrow-right"></i>';
+            loginBtn.disabled = false;
+        });
         
-        // Rafraîchir les stats périodiquement
-        setInterval(() => { if (localStorage.getItem('admin_logged_in') === 'true') updateStats(); }, 5000);
+        document.getElementById('logoutBtnAdmin')?.addEventListener('click', () => {
+            logout();
+        });
+        
+        // Check session on load
+        (async () => {
+            const isLoggedIn = await checkSession();
+            if (isLoggedIn) {
+                localStorage.setItem('admin_logged_in', 'true');
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dashboardPage').style.display = 'block';
+                loadDashboardStats();
+                loadMatieres();
+                loadProfesseurs();
+                loadOffres();
+                loadGalerie();
+                loadTemoignages();
+                loadMessages();
+            }
+        })();
     </script>
 </body>
 </html>
