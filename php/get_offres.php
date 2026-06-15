@@ -13,14 +13,6 @@ try {
     
     $offres = $stmt->fetchAll();
     
-    // Transformer matières en tableau
-    foreach ($offres as &$offre) {
-        $offre['matieres'] = explode(',', $offre['matieres']);
-        if ($offre['avantages']) {
-            $offre['avantages'] = explode(',', $offre['avantages']);
-        }
-    }
-    
     sendResponse(true, $offres);
     
 } catch (PDOException $e) {
