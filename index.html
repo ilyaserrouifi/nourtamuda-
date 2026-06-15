@@ -67,76 +67,34 @@
         }
 
         /* ============================================================ */
-        /* ANIMATIONS GLOBALES */
+        /* ANIMATIONS */
         /* ============================================================ */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
-        .fade-up {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .fade-left {
-            animation: fadeInLeft 0.8s ease forwards;
-        }
-
-        .fade-right {
-            animation: fadeInRight 0.8s ease forwards;
-        }
+        .fade-up { animation: fadeInUp 0.8s ease forwards; }
+        .fade-left { animation: fadeInLeft 0.8s ease forwards; }
+        .fade-right { animation: fadeInRight 0.8s ease forwards; }
 
         /* ============================================================ */
-        /* NAVBAR STYLES */
+        /* NAVBAR */
         /* ============================================================ */
         .navbar {
             position: fixed;
@@ -161,16 +119,10 @@
             padding: 1rem 24px;
         }
 
-        .logo {
-            display: flex;
-            flex-direction: column;
-        }
-
         .logo h1 {
             font-size: 1.8rem;
             color: var(--bleu-marini);
             letter-spacing: -0.5px;
-            line-height: 1.2;
         }
 
         .logo-accent {
@@ -238,7 +190,6 @@
             color: var(--bleu-marini);
         }
 
-        /* Responsive */
         @media (max-width: 992px) {
             .nav-menu {
                 position: fixed;
@@ -253,36 +204,19 @@
                 padding: 2rem;
                 gap: 1.5rem;
             }
-            .nav-menu.active {
-                left: 0;
-            }
-            .menu-hamburger {
-                display: block;
-            }
-            .btn-inscription {
-                display: none;
-            }
+            .nav-menu.active { left: 0; }
+            .menu-hamburger { display: block; }
+            .btn-inscription { display: none; }
         }
 
         /* ============================================================ */
         /* HERO SECTION */
         /* ============================================================ */
         .hero {
-            padding: 160px 0 100px;
+            padding: 140px 0 80px;
             background: linear-gradient(135deg, #F8FAFF 0%, #FFFFFF 100%);
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(201, 168, 76, 0.1), transparent);
-            pointer-events: none;
         }
 
         .hero-container {
@@ -292,47 +226,20 @@
             flex-wrap: wrap;
         }
 
-        .hero-content {
-            flex: 1;
-        }
-
+        .hero-content { flex: 1; }
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             line-height: 1.2;
             margin-bottom: 1.5rem;
-            font-weight: 700;
         }
-
-        .gold-text {
-            color: var(--gold);
-            position: relative;
-            display: inline-block;
-        }
-
-        .gold-text::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: rgba(201, 168, 76, 0.3);
-            z-index: -1;
-        }
-
+        .gold-text { color: var(--gold); }
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-gray);
             margin-bottom: 2rem;
-            line-height: 1.6;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        
         .btn-primary, .btn-secondary {
             padding: 1rem 2rem;
             border-radius: 40px;
@@ -345,46 +252,28 @@
             align-items: center;
             gap: 8px;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, var(--bleu-marini), #0F2852);
             color: white;
-            box-shadow: var(--shadow-sm);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         .btn-secondary {
             background: transparent;
             border: 2px solid var(--bleu-marini);
             color: var(--bleu-marini);
         }
-
         .btn-secondary:hover {
             background: var(--bleu-marini);
             color: white;
             transform: translateY(-3px);
         }
-
-        .hero-image {
-            flex: 1;
-            position: relative;
-        }
-
+        
+        .hero-image { flex: 1; position: relative; }
         .hero-image img {
             width: 100%;
             border-radius: var(--border-radius-lg);
             box-shadow: var(--shadow-lg);
-            transition: var(--transition);
         }
-
-        .hero-image img:hover {
-            transform: scale(1.02);
-        }
-
         .hero-badge {
             position: absolute;
             bottom: -20px;
@@ -395,7 +284,6 @@
             border-radius: 40px;
             font-size: 0.85rem;
             font-weight: 600;
-            box-shadow: var(--shadow-md);
         }
 
         /* ============================================================ */
@@ -405,73 +293,27 @@
             background: linear-gradient(135deg, var(--bleu-marini), #0F2852);
             padding: 60px 0;
             color: white;
-            position: relative;
-            overflow: hidden;
         }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
-
-        .stat-card {
-            padding: 1.5rem;
-            transition: var(--transition);
-            border-radius: var(--border-radius-md);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-number {
-            font-size: 3.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .stat-icon {
-            font-size: 2rem;
-            margin-top: 0.8rem;
-            opacity: 0.6;
-        }
+        .stat-card { padding: 1.5rem; transition: var(--transition); border-radius: var(--border-radius-md); }
+        .stat-card:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-5px); }
+        .stat-number { font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-icon { font-size: 2rem; margin-top: 0.8rem; opacity: 0.6; }
 
         /* ============================================================ */
         /* MATIERES SECTION */
         /* ============================================================ */
         .matieres-section, .professeurs-section, .offres-section, 
         .galerie-section, .why-section, .temoignages-section, .contact-section {
-            padding: 100px 0;
+            padding: 80px 0;
         }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
+        .section-header { text-align: center; margin-bottom: 3rem; }
         .section-title {
             font-size: 2.5rem;
             color: var(--bleu-marini);
@@ -479,7 +321,6 @@
             position: relative;
             display: inline-block;
         }
-
         .section-title::after {
             content: '';
             position: absolute;
@@ -491,12 +332,11 @@
             background: var(--gold);
             border-radius: 2px;
         }
-
         .section-subtitle {
             color: var(--text-gray);
             font-size: 1.1rem;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 1rem auto 0;
         }
 
         .filter-buttons {
@@ -506,7 +346,6 @@
             margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
-
         .filter-btn {
             padding: 0.7rem 1.8rem;
             background: var(--bg-light);
@@ -515,9 +354,7 @@
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
-            color: var(--text-dark);
         }
-
         .filter-btn.active, .filter-btn:hover {
             background: var(--gold);
             color: white;
@@ -529,7 +366,6 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .matiere-card, .offre-card, .temoignage-card {
             background: var(--bg-white);
             border-radius: var(--border-radius-md);
@@ -539,36 +375,24 @@
             text-align: center;
             border: 1px solid rgba(0,0,0,0.05);
         }
-
         .matiere-card:hover, .offre-card:hover, .temoignage-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
         }
-
-        .matiere-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
+        .matiere-icon { font-size: 3rem; margin-bottom: 1rem; }
         .matiere-nom {
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
             color: var(--bleu-marini);
             font-weight: 600;
         }
-
         .matiere-niveaux {
             color: var(--gold);
             font-size: 0.85rem;
             margin-bottom: 1rem;
             font-weight: 600;
         }
-
-        .matiere-description {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
+        .matiere-description { color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; }
 
         /* ============================================================ */
         /* PROFESSEURS CAROUSEL */
@@ -578,13 +402,11 @@
             overflow: hidden;
             padding: 0 40px;
         }
-
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease;
             gap: 2rem;
         }
-
         .prof-card {
             min-width: 320px;
             background: var(--bg-white);
@@ -593,46 +415,21 @@
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
-
-        .prof-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
+        .prof-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
         .prof-card img {
             width: 100%;
             height: 280px;
             object-fit: cover;
         }
-
-        .prof-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
+        .prof-info { padding: 1.5rem; text-align: center; }
         .prof-nom {
             font-size: 1.3rem;
             margin-bottom: 0.3rem;
             color: var(--bleu-marini);
         }
-
-        .prof-matiere {
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .prof-experience {
-            color: var(--text-gray);
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .prof-bio {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
+        .prof-matiere { color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; }
+        .prof-experience { color: var(--text-gray); font-size: 0.85rem; margin-bottom: 0.8rem; }
+        .prof-bio { color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; }
 
         .carousel-btn {
             position: absolute;
@@ -649,20 +446,11 @@
             transition: var(--transition);
             font-size: 1.2rem;
         }
-
-        .carousel-btn:hover {
-            background: var(--gold);
-            transform: translateY(-50%) scale(1.1);
-        }
-
+        .carousel-btn:hover { background: var(--gold); transform: translateY(-50%) scale(1.1); }
         .prev-btn { left: -10px; }
         .next-btn { right: -10px; }
-
-        .carousel-dots {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
+        
+        .carousel-dots { text-align: center; margin-top: 2rem; }
         .dot {
             display: inline-block;
             width: 10px;
@@ -673,43 +461,15 @@
             cursor: pointer;
             transition: var(--transition);
         }
-
-        .dot.active {
-            background: var(--gold);
-            width: 25px;
-            border-radius: 5px;
-        }
+        .dot.active { background: var(--gold); width: 25px; border-radius: 5px; }
 
         /* ============================================================ */
-        /* OFFRES SECTION */
+        /* OFFRES */
         /* ============================================================ */
-        .offre-card {
-            text-align: left;
-        }
-
-        .offre-nom {
-            font-size: 1.3rem;
-            color: var(--bleu-marini);
-            margin-bottom: 0.5rem;
-        }
-
-        .offre-prix {
-            font-size: 1.8rem;
-            color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .offre-duree {
-            color: var(--text-gray);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .offre-matieres {
-            margin-bottom: 1rem;
-        }
-
+        .offre-card { text-align: left; }
+        .offre-nom { font-size: 1.3rem; color: var(--bleu-marini); margin-bottom: 0.5rem; }
+        .offre-prix { font-size: 1.8rem; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; }
+        .offre-duree { color: var(--text-gray); margin-bottom: 1rem; font-size: 0.9rem; }
         .offre-matiere-tag {
             display: inline-block;
             background: var(--bg-light);
@@ -718,7 +478,6 @@
             font-size: 0.75rem;
             margin: 0.2rem;
         }
-
         .offre-niveau {
             background: var(--gold);
             color: white;
@@ -728,7 +487,6 @@
             font-size: 0.75rem;
             margin-top: 0.5rem;
         }
-
         .btn-offre {
             width: 100%;
             margin-top: 1rem;
@@ -741,20 +499,16 @@
             transition: var(--transition);
             font-weight: 600;
         }
-
-        .btn-offre:hover {
-            background: var(--gold);
-        }
+        .btn-offre:hover { background: var(--gold); }
 
         /* ============================================================ */
-        /* GALERIE SECTION */
+        /* GALERIE */
         /* ============================================================ */
         .galerie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
-
         .galerie-item {
             position: relative;
             overflow: hidden;
@@ -762,18 +516,13 @@
             cursor: pointer;
             aspect-ratio: 1;
         }
-
         .galerie-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-
-        .galerie-item:hover img {
-            transform: scale(1.1);
-        }
-
+        .galerie-item:hover img { transform: scale(1.1); }
         .galerie-overlay {
             position: absolute;
             bottom: 0;
@@ -785,24 +534,17 @@
             transform: translateY(100%);
             transition: var(--transition);
         }
-
-        .galerie-item:hover .galerie-overlay {
-            transform: translateY(0);
-        }
+        .galerie-item:hover .galerie-overlay { transform: translateY(0); }
 
         /* ============================================================ */
         /* WHY SECTION */
         /* ============================================================ */
-        .why-section {
-            background: var(--bg-light);
-        }
-
+        .why-section { background: var(--bg-light); }
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
         .why-card {
             text-align: center;
             padding: 2rem;
@@ -810,72 +552,25 @@
             border-radius: var(--border-radius-md);
             transition: var(--transition);
         }
-
-        .why-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .why-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .why-card h3 {
-            margin-bottom: 1rem;
-            color: var(--bleu-marini);
-        }
+        .why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .why-icon { font-size: 3rem; color: var(--gold); margin-bottom: 1rem; }
+        .why-card h3 { margin-bottom: 1rem; color: var(--bleu-marini); }
 
         /* ============================================================ */
-        /* TEMOIGNAGES SECTION */
-        /* ============================================================ */
-        .temoignage-card {
-            text-align: left;
-        }
-
-        .temoignage-etoiles {
-            color: var(--gold);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .temoignage-texte {
-            font-style: italic;
-            margin-bottom: 1rem;
-            color: var(--text-gray);
-        }
-
-        .temoignage-nom {
-            font-weight: 600;
-            color: var(--bleu-marini);
-        }
-
-        .temoignage-niveau {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-        }
-
-        /* ============================================================ */
-        /* CONTACT SECTION */
+        /* CONTACT */
         /* ============================================================ */
         .contact-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
         }
-
         .contact-form-container, .contact-info-container {
             background: var(--bg-white);
             padding: 2rem;
             border-radius: var(--border-radius-md);
             box-shadow: var(--shadow-sm);
         }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
+        .form-group { margin-bottom: 1rem; }
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 1rem;
@@ -884,13 +579,11 @@
             font-family: 'Inter', sans-serif;
             transition: var(--transition);
         }
-
         .form-group input:focus, .form-group textarea:focus {
             outline: none;
             border-color: var(--gold);
             box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
         }
-
         .info-card {
             display: flex;
             align-items: center;
@@ -900,19 +593,18 @@
             border-radius: var(--border-radius-sm);
             transition: var(--transition);
         }
-
-        .info-card:hover {
-            background: var(--bg-light);
+        .info-card:hover { background: var(--bg-light); }
+        .info-card i { font-size: 1.5rem; color: var(--gold); }
+        .map-container { margin-top: 1.5rem; }
+        
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--border-radius-sm);
+            display: none;
         }
-
-        .info-card i {
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-
-        .map-container {
-            margin-top: 1.5rem;
-        }
+        .form-message.success { display: block; background: #10B981; color: white; }
+        .form-message.error { display: block; background: #EF4444; color: white; }
 
         /* ============================================================ */
         /* FOOTER */
@@ -922,29 +614,15 @@
             color: white;
             padding: 60px 0 20px;
         }
-
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
-
-        .footer-col h3, .footer-col h4 {
-            margin-bottom: 1rem;
-        }
-
-        .footer-col p {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
+        .footer-col h3, .footer-col h4 { margin-bottom: 1rem; }
+        .footer-col p { opacity: 0.8; line-height: 1.6; }
+        .social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
         .social-icons a {
             color: white;
             background: rgba(255,255,255,0.1);
@@ -956,40 +634,22 @@
             justify-content: center;
             transition: var(--transition);
         }
-
-        .social-icons a:hover {
-            background: var(--gold);
-            transform: translateY(-3px);
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.5rem;
-        }
-
+        .social-icons a:hover { background: var(--gold); transform: translateY(-3px); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
         .footer-col ul li a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
             transition: var(--transition);
         }
-
-        .footer-col ul li a:hover {
-            color: var(--gold);
-            padding-left: 5px;
-        }
-
+        .footer-col ul li a:hover { color: var(--gold); padding-left: 5px; }
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* ============================================================ */
-        /* LIGHTBOX */
-        /* ============================================================ */
+        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -1002,16 +662,8 @@
             justify-content: center;
             align-items: center;
         }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
+        .lightbox.active { display: flex; }
+        .lightbox-content { max-width: 90%; max-height: 90%; }
         .close-lightbox {
             position: absolute;
             top: 20px;
@@ -1021,46 +673,26 @@
             cursor: pointer;
         }
 
-        /* ============================================================ */
-        /* RESPONSIVE */
-        /* ============================================================ */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-            }
-            .carousel-btn {
-                width: 35px;
-                height: 35px;
-            }
+            .hero-title { font-size: 2rem; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .carousel-btn { width: 35px; height: 35px; }
             .prev-btn { left: -5px; }
             .next-btn { right: -5px; }
-            .section-title {
-                font-size: 1.8rem;
-            }
+            .section-title { font-size: 1.8rem; }
         }
 
-        /* Message notification */
-        .form-message {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: var(--border-radius-sm);
-            display: none;
+        /* Loading spinner */
+        .loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
         }
-
-        .form-message.success {
-            display: block;
-            background: #10B981;
-            color: white;
-        }
-
-        .form-message.error {
-            display: block;
-            background: #EF4444;
-            color: white;
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -1107,34 +739,34 @@
             <div class="hero-image fade-right">
                 <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=500&fit=crop" alt="Salle de classe NOURTAMUDA">
                 <div class="hero-badge">
-                    <i class="fas fa-star"></i> +94% de réussite
+                    <i class="fas fa-star"></i> +96% de réussite
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- SECTION STATISTIQUES -->
+    <!-- STATISTIQUES (API) -->
     <!-- ============================================================ -->
     <section class="stats-section">
         <div class="container stats-grid">
             <div class="stat-card">
-                <div class="stat-number" data-target="520">0</div>
+                <div class="stat-number" id="statEleves">0</div>
                 <div class="stat-label">Élèves inscrits</div>
                 <i class="fas fa-users stat-icon"></i>
             </div>
             <div class="stat-card">
-                <div class="stat-number" data-target="18">0</div>
+                <div class="stat-number" id="statProfs">0</div>
                 <div class="stat-label">Professeurs experts</div>
                 <i class="fas fa-chalkboard-user stat-icon"></i>
             </div>
             <div class="stat-card">
-                <div class="stat-number" data-target="8">0</div>
+                <div class="stat-number" id="statAnnees">0</div>
                 <div class="stat-label">Années d'expérience</div>
                 <i class="fas fa-calendar-alt stat-icon"></i>
             </div>
             <div class="stat-card">
-                <div class="stat-number" data-target="96">0</div>
+                <div class="stat-number" id="statTaux">0</div>
                 <div class="stat-label">Taux de réussite (%)</div>
                 <i class="fas fa-trophy stat-icon"></i>
             </div>
@@ -1142,7 +774,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- SECTION MATIERES -->
+    <!-- MATIERES (API) -->
     <!-- ============================================================ -->
     <section id="matieres" class="matieres-section">
         <div class="container">
@@ -1156,12 +788,14 @@
                 <button class="filter-btn" data-niveau="Collège">📗 Collège</button>
                 <button class="filter-btn" data-niveau="Lycée">📕 Lycée</button>
             </div>
-            <div class="matieres-grid" id="matieresGrid"></div>
+            <div class="matieres-grid" id="matieresGrid">
+                <div class="loader" style="margin: 0 auto;"></div>
+            </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- SECTION PROFESSEURS -->
+    <!-- PROFESSEURS (API) -->
     <!-- ============================================================ -->
     <section id="professeurs" class="professeurs-section">
         <div class="container">
@@ -1171,7 +805,9 @@
             </div>
             <div class="carousel-container">
                 <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <div class="carousel-track" id="professeursTrack"></div>
+                <div class="carousel-track" id="professeursTrack">
+                    <div class="loader" style="margin: 0 auto;"></div>
+                </div>
                 <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="carousel-dots" id="carouselDots"></div>
@@ -1179,7 +815,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- SECTION OFFRES -->
+    <!-- OFFRES (API) -->
     <!-- ============================================================ -->
     <section id="offres" class="offres-section">
         <div class="container">
@@ -1187,12 +823,14 @@
                 <h2 class="section-title">💰 Nos Offres & Tarifs</h2>
                 <p class="section-subtitle">Des formules adaptées à tous les besoins et budgets</p>
             </div>
-            <div class="offres-grid" id="offresGrid"></div>
+            <div class="offres-grid" id="offresGrid">
+                <div class="loader" style="margin: 0 auto;"></div>
+            </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- SECTION GALERIE -->
+    <!-- GALERIE (API) -->
     <!-- ============================================================ -->
     <section id="galerie" class="galerie-section">
         <div class="container">
@@ -1200,12 +838,14 @@
                 <h2 class="section-title">📸 Galerie - Notre Centre</h2>
                 <p class="section-subtitle">Découvrez nos espaces modernes et chaleureux</p>
             </div>
-            <div class="galerie-grid" id="galerieGrid"></div>
+            <div class="galerie-grid" id="galerieGrid">
+                <div class="loader" style="margin: 0 auto;"></div>
+            </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- SECTION POURQUOI NOURTAMUDA -->
+    <!-- POURQUOI NOURTAMUDA -->
     <!-- ============================================================ -->
     <section class="why-section">
         <div class="container">
@@ -1239,7 +879,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- SECTION TEMOIGNAGES -->
+    <!-- TEMOIGNAGES (API) -->
     <!-- ============================================================ -->
     <section class="temoignages-section">
         <div class="container">
@@ -1247,12 +887,14 @@
                 <h2 class="section-title">💬 Ils nous font confiance</h2>
                 <p class="section-subtitle">Ce que disent nos élèves et leurs parents</p>
             </div>
-            <div class="temoignages-grid" id="temoignagesGrid"></div>
+            <div class="temoignages-grid" id="temoignagesGrid">
+                <div class="loader" style="margin: 0 auto;"></div>
+            </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- SECTION CONTACT -->
+    <!-- CONTACT (API) -->
     <!-- ============================================================ -->
     <section id="contact" class="contact-section">
         <div class="container">
@@ -1276,7 +918,9 @@
                         <div class="form-group">
                             <textarea id="contactMessage" rows="4" placeholder="Votre message..."></textarea>
                         </div>
-                        <button type="submit" class="btn-primary" style="width: 100%;">📨 Envoyer le message</button>
+                        <button type="submit" class="btn-primary" style="width: 100%;" id="submitContactBtn">
+                            📨 Envoyer le message
+                        </button>
                     </form>
                     <div id="formMessage" class="form-message"></div>
                 </div>
@@ -1348,10 +992,14 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Nos coordonnées</h4>
-                    <p><i class="fas fa-map-pin"></i> Tétouan, Maroc</p>
-                    <p><i class="fas fa-phone"></i> +212 6 12 34 56 78</p>
-                    <p><i class="fas fa-envelope"></i> contact@nourtamuda.ma</p>
+                    <h4>Newsletter</h4>
+                    <p>Recevez nos actualités et offres exclusives.</p>
+                    <form id="newsletterForm">
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Votre email" required style="flex:1; padding: 10px; border-radius: 40px; border: none;">
+                            <button type="submit" style="background: var(--gold); border: none; padding: 10px 15px; border-radius: 40px; cursor: pointer;"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1367,184 +1015,181 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- JAVASCRIPT COMPLET -->
+    <!-- JAVASCRIPT COMPLET AVEC API POSTGRESQL -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
-        // BASE DE DONNEES SIMULEE (localStorage)
+        // CONFIGURATION API
+        // ============================================================
+        const API_BASE = '/php/';
+        
+        // ============================================================
+        // FONCTIONS API
         // ============================================================
         
-        // Données par défaut
-        const defaultData = {
-            matieres: [
-                { id: 1, nom: "Mathématiques", niveau: ["Primaire", "Collège", "Lycée"], icone: "📐", description: "Algèbre, géométrie, analyse, probabilités - préparation aux examens" },
-                { id: 2, nom: "Physique-Chimie", niveau: ["Collège", "Lycée"], icone: "⚛️", description: "Mécanique, électricité, chimie organique et inorganique" },
-                { id: 3, nom: "SVT", niveau: ["Collège", "Lycée"], icone: "🔬", description: "Biologie, géologie, écologie - préparation au BAC" },
-                { id: 4, nom: "Français", niveau: ["Primaire", "Collège", "Lycée"], icone: "📖", description: "Grammaire, conjugaison, expression écrite et orale" },
-                { id: 5, nom: "Arabe", niveau: ["Primaire", "Collège", "Lycée"], icone: "📜", description: "Langue et littérature arabes, grammaire et dictée" },
-                { id: 6, nom: "Anglais", niveau: ["Primaire", "Collège", "Lycée"], icone: "🇬🇧", description: "Grammaire, vocabulaire, conversation et préparation TOEIC" },
-                { id: 7, nom: "Histoire-Géo", niveau: ["Collège", "Lycée"], icone: "🗺️", description: "Histoire du Maroc, géographie mondiale, éducation civique" },
-                { id: 8, nom: "Informatique", niveau: ["Primaire", "Collège", "Lycée"], icone: "💻", description: "Algorithmique, programmation, bureautique" },
-                { id: 9, nom: "Philosophie", niveau: ["Lycée"], icone: "🧠", description: "Préparation au BAC philo, dissertation et explication de texte" }
-            ],
-            professeurs: [
-                { id: 1, nom: "Prof. Karim El Fassi", photo: "https://randomuser.me/api/portraits/men/32.jpg", matiere: "Mathématiques", experience: "12 ans", bio: "Agrégé de mathématiques, spécialiste de la préparation au baccalauréat." },
-                { id: 2, nom: "Prof. Salima Benjelloun", photo: "https://randomuser.me/api/portraits/women/68.jpg", matiere: "Physique-Chimie", experience: "9 ans", bio: "Doctorante en physique, méthode interactive et expériences en laboratoire." },
-                { id: 3, nom: "Prof. Youssef El Mansouri", photo: "https://randomuser.me/api/portraits/men/45.jpg", matiere: "Français", experience: "15 ans", bio: "Ancien examinateur, expert en préparation aux examens nationaux." },
-                { id: 4, nom: "Prof. Fatima Zahra", photo: "https://randomuser.me/api/portraits/women/44.jpg", matiere: "Arabe", experience: "10 ans", bio: "Spécialiste en littérature arabe et grammaire approfondie." },
-                { id: 5, nom: "Prof. Mehdi Alaoui", photo: "https://randomuser.me/api/portraits/men/52.jpg", matiere: "Anglais", experience: "8 ans", bio: "Certifié IELTS et TOEIC, cours conversation et grammaire." },
-                { id: 6, nom: "Prof. Noura Tazi", photo: "https://randomuser.me/api/portraits/women/22.jpg", matiere: "SVT", experience: "7 ans", bio: "Passionnée de biologie, préparation renforcée pour le bac." }
-            ],
-            offres: [
-                { id: 1, nom: "Cours Individuel", prix: "300 MAD", duree: "2h/semaine", matieres: ["Toutes matières"], niveau: "Tous niveaux", description: "Suivi personnalisé avec un professeur dédié." },
-                { id: 2, nom: "Petit Groupe (3 él.)", prix: "200 MAD", duree: "2h/semaine", matieres: ["Toutes matières"], niveau: "Tous niveaux", description: "Apprentissage collaboratif en petit groupe." },
-                { id: 3, nom: "Grand Groupe (8 él.)", prix: "150 MAD", duree: "2h/semaine", matieres: ["Toutes matières"], niveau: "Tous niveaux", description: "Cours collectifs économiques et efficaces." },
-                { id: 4, nom: "Pack Intensif BAC", prix: "500 MAD", duree: "5h/semaine", matieres: ["Maths", "Physique", "SVT", "Français", "Philo"], niveau: "Lycée", description: "Préparation intensive aux examens du baccalauréat." },
-                { id: 5, nom: "Cours à Domicile", prix: "400 MAD", duree: "2h/semaine", matieres: ["Toutes matières"], niveau: "Tous niveaux", description: "Le professeur se déplace à votre domicile." }
-            ],
-            galerie: [
-                { id: 1, url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400&h=300&fit=crop", titre: "Salle de cours moderne" },
-                { id: 2, url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop", titre: "Bibliothèque" },
-                { id: 3, url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop", titre: "Salle informatique" },
-                { id: 4, url: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=300&fit=crop", titre: "Salle de réunion" },
-                { id: 5, url: "https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=300&fit=crop", titre: "Cour extérieure" },
-                { id: 6, url: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop", titre: "Laboratoire" },
-                { id: 7, url: "https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?w=400&h=300&fit=crop", titre: "Salle d'étude" },
-                { id: 8, url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop", titre: "Amphithéâtre" }
-            ],
-            temoignages: [
-                { id: 1, nom: "Ahmed Bennani", niveau: "Terminale BAC", note: 5, texte: "Grâce à NOURTAMUDA, j'ai obtenu mon bac avec mention Très Bien ! Les professeurs sont exceptionnels." },
-                { id: 2, nom: "Mme. Karima", niveau: "Parent d'élève", note: 5, texte: "Mon fils a progressé de 4 points en mathématiques en seulement 3 mois. Je recommande vivement !" },
-                { id: 3, nom: "Salma El Fassi", niveau: "3ème Collège", note: 4, texte: "Ambiance agréable, professeurs à l'écoute. Les cours sont très bien structurés." },
-                { id: 4, nom: "Omar Tazi", niveau: "1ère BAC", note: 5, texte: "Les séances de soutien m'ont permis de combler mes lacunes en physique-chimie." }
-            ],
-            messages: []
-        };
-
-        // Initialisation de localStorage
-        function initDB() {
-            if (!localStorage.getItem('nourtamuda_matieres')) {
-                localStorage.setItem('nourtamuda_matieres', JSON.stringify(defaultData.matieres));
-                localStorage.setItem('nourtamuda_professeurs', JSON.stringify(defaultData.professeurs));
-                localStorage.setItem('nourtamuda_offres', JSON.stringify(defaultData.offres));
-                localStorage.setItem('nourtamuda_galerie', JSON.stringify(defaultData.galerie));
-                localStorage.setItem('nourtamuda_temoignages', JSON.stringify(defaultData.temoignages));
-                localStorage.setItem('nourtamuda_messages', JSON.stringify(defaultData.messages));
+        // Charger les statistiques
+        async function loadStats() {
+            try {
+                const response = await fetch(API_BASE + 'get_stats.php');
+                const result = await response.json();
+                if (result.success && result.data) {
+                    const stats = result.data;
+                    document.getElementById('statEleves').innerText = stats.eleves || 428;
+                    document.getElementById('statProfs').innerText = stats.professeurs || 12;
+                    document.getElementById('statAnnees').innerText = stats.annees || 8;
+                    document.getElementById('statTaux').innerText = stats.taux_reussite || 96;
+                }
+            } catch (error) {
+                console.error('Erreur chargement stats:', error);
+                // Fallback
+                document.getElementById('statEleves').innerText = 428;
+                document.getElementById('statProfs').innerText = 12;
+                document.getElementById('statAnnees').innerText = 8;
+                document.getElementById('statTaux').innerText = 96;
             }
         }
-
-        function getMatieres() { return JSON.parse(localStorage.getItem('nourtamuda_matieres') || '[]'); }
-        function getProfesseurs() { return JSON.parse(localStorage.getItem('nourtamuda_professeurs') || '[]'); }
-        function getOffres() { return JSON.parse(localStorage.getItem('nourtamuda_offres') || '[]'); }
-        function getGalerie() { return JSON.parse(localStorage.getItem('nourtamuda_galerie') || '[]'); }
-        function getTemoignages() { return JSON.parse(localStorage.getItem('nourtamuda_temoignages') || '[]'); }
-        function getMessages() { return JSON.parse(localStorage.getItem('nourtamuda_messages') || '[]'); }
-
-        function addMessage(message) {
-            const messages = getMessages();
-            message.id = Date.now();
-            message.date = new Date().toISOString();
-            message.lu = false;
-            messages.push(message);
-            localStorage.setItem('nourtamuda_messages', JSON.stringify(messages));
-        }
-
-        // ============================================================
-        // RENDU DES SECTIONS DYNAMIQUES
-        // ============================================================
         
-        // Matières
-        function renderMatieres(niveauFiltre = 'all') {
-            const matieres = getMatieres();
+        // Charger les matières
+        async function loadMatieres() {
+            try {
+                const response = await fetch(API_BASE + 'get_matieres.php');
+                const result = await response.json();
+                if (result.success) {
+                    window.allMatieres = result.data;
+                    renderMatieres('all');
+                    return result.data;
+                }
+            } catch (error) {
+                console.error('Erreur chargement matières:', error);
+                document.getElementById('matieresGrid').innerHTML = '<p style="text-align:center;color:red;">Erreur de chargement des données</p>';
+            }
+        }
+        
+        function renderMatieres(niveauFilter) {
             const grid = document.getElementById('matieresGrid');
-            let filtered = matieres;
-            if (niveauFiltre !== 'all') {
-                filtered = matieres.filter(m => m.niveau.includes(niveauFiltre));
+            let filtered = window.allMatieres || [];
+            if (niveauFilter !== 'all') {
+                filtered = filtered.filter(m => m.niveaux && m.niveaux.includes(niveauFilter));
+            }
+            if (filtered.length === 0) {
+                grid.innerHTML = '<p style="text-align:center;">Aucune matière trouvée</p>';
+                return;
             }
             grid.innerHTML = filtered.map(m => `
                 <div class="matiere-card">
-                    <div class="matiere-icon">${m.icone}</div>
-                    <h3 class="matiere-nom">${m.nom}</h3>
-                    <div class="matiere-niveaux">🎓 ${m.niveau.join(' · ')}</div>
-                    <p class="matiere-description">${m.description}</p>
+                    <div class="matiere-icon">${m.icone || '📚'}</div>
+                    <h3 class="matiere-nom">${escapeHtml(m.nom)}</h3>
+                    <div class="matiere-niveaux">🎓 ${m.niveaux || 'Tous niveaux'}</div>
+                    <p class="matiere-description">${escapeHtml(m.description || '')}</p>
                 </div>
             `).join('');
         }
-
-        // Professeurs Carousel
-        let currentSlide = 0;
-        let profsPerView = 3;
+        
+        // Charger les professeurs
+        async function loadProfesseurs() {
+            try {
+                const response = await fetch(API_BASE + 'get_professeurs.php');
+                const result = await response.json();
+                if (result.success) {
+                    window.allProfesseurs = result.data;
+                    renderProfesseurs();
+                    return result.data;
+                }
+            } catch (error) {
+                console.error('Erreur chargement professeurs:', error);
+            }
+        }
         
         function renderProfesseurs() {
-            const profs = getProfesseurs();
             const track = document.getElementById('professeursTrack');
+            const profs = window.allProfesseurs || [];
+            if (profs.length === 0) {
+                track.innerHTML = '<p style="text-align:center;">Aucun professeur trouvé</p>';
+                return;
+            }
             track.innerHTML = profs.map(p => `
                 <div class="prof-card">
-                    <img src="${p.photo}" alt="${p.nom}">
+                    <img src="${p.photo || 'https://randomuser.me/api/portraits/lego/1.jpg'}" alt="${escapeHtml(p.nom)}">
                     <div class="prof-info">
-                        <h3 class="prof-nom">${p.nom}</h3>
-                        <div class="prof-matiere">📖 ${p.matiere}</div>
-                        <div class="prof-experience">⭐ ${p.experience} d'expérience</div>
-                        <p class="prof-bio">${p.bio}</p>
+                        <h3 class="prof-nom">${escapeHtml(p.nom)}</h3>
+                        <div class="prof-matiere">📖 ${escapeHtml(p.matiere_nom || p.matiere || '')}</div>
+                        <div class="prof-experience">⭐ ${p.experience || 'Plusieurs années'} d'expérience</div>
+                        <p class="prof-bio">${escapeHtml((p.bio || '').substring(0, 120))}...</p>
                     </div>
                 </div>
             `).join('');
             updateCarousel();
         }
-
-        function updateCarousel() {
-            const profs = getProfesseurs();
-            const track = document.getElementById('professeursTrack');
-            const cards = document.querySelectorAll('.prof-card');
-            profsPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-            const maxSlide = Math.max(0, profs.length - profsPerView);
-            currentSlide = Math.min(currentSlide, maxSlide);
-            const cardWidth = cards[0]?.offsetWidth + 32 || 340;
-            track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
-            
-            // Dots
-            const dotsContainer = document.getElementById('carouselDots');
-            const dotCount = Math.ceil(profs.length / profsPerView);
-            dotsContainer.innerHTML = Array.from({ length: dotCount }, (_, i) => 
-                `<span class="dot ${i === currentSlide ? 'active' : ''}" data-slide="${i}"></span>`
-            ).join('');
-            document.querySelectorAll('.dot').forEach(dot => {
-                dot.addEventListener('click', (e) => {
-                    currentSlide = parseInt(e.target.dataset.slide);
-                    updateCarousel();
-                });
-            });
+        
+        // Charger les offres
+        async function loadOffres() {
+            try {
+                const response = await fetch(API_BASE + 'get_offres.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderOffres(result.data);
+                    return result.data;
+                }
+            } catch (error) {
+                console.error('Erreur chargement offres:', error);
+            }
         }
-
-        // Offres
-        function renderOffres() {
-            const offres = getOffres();
+        
+        function renderOffres(offres) {
             const grid = document.getElementById('offresGrid');
-            grid.innerHTML = offres.map(o => `
-                <div class="offre-card">
-                    <h3 class="offre-nom">${o.nom}</h3>
-                    <div class="offre-prix">${o.prix}<span style="font-size: 0.9rem;">/mois</span></div>
-                    <div class="offre-duree">⏱️ ${o.duree}</div>
-                    <div class="offre-matieres">
-                        ${o.matieres.map(m => `<span class="offre-matiere-tag">${m}</span>`).join('')}
+            if (!offres || offres.length === 0) {
+                grid.innerHTML = '<p style="text-align:center;">Aucune offre trouvée</p>';
+                return;
+            }
+            grid.innerHTML = offres.map(o => {
+                let matieresArray = [];
+                if (o.matieres) {
+                    matieresArray = typeof o.matieres === 'string' ? o.matieres.split(',') : o.matieres;
+                }
+                return `
+                    <div class="offre-card">
+                        <h3 class="offre-nom">${escapeHtml(o.nom)}</h3>
+                        <div class="offre-prix">${escapeHtml(o.prix)}<span style="font-size: 0.9rem;">/mois</span></div>
+                        <div class="offre-duree">⏱️ ${escapeHtml(o.duree || '2h/semaine')}</div>
+                        <div class="offre-matieres">
+                            ${matieresArray.map(m => `<span class="offre-matiere-tag">${escapeHtml(m.trim())}</span>`).join('')}
+                        </div>
+                        <div class="offre-niveau">${escapeHtml(o.niveau || 'Tous niveaux')}</div>
+                        <p style="margin-top: 0.8rem; color: var(--text-gray); font-size: 0.85rem;">${escapeHtml(o.description || '')}</p>
+                        <button class="btn-offre" onclick="window.location.href='#contact'">Choisir cette offre</button>
                     </div>
-                    <div class="offre-niveau">${o.niveau}</div>
-                    <p style="margin-top: 0.8rem; color: var(--text-gray); font-size: 0.85rem;">${o.description}</p>
-                    <button class="btn-offre" onclick="alert('Merci de nous contacter au +212 6 12 34 56 78 pour réserver cette offre')">Choisir cette offre</button>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
-
-        // Galerie
-        function renderGalerie() {
-            const galerie = getGalerie();
+        
+        // Charger la galerie
+        async function loadGalerie() {
+            try {
+                const response = await fetch(API_BASE + 'get_galerie.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderGalerie(result.data);
+                    return result.data;
+                }
+            } catch (error) {
+                console.error('Erreur chargement galerie:', error);
+            }
+        }
+        
+        function renderGalerie(images) {
             const grid = document.getElementById('galerieGrid');
-            grid.innerHTML = galerie.map(g => `
-                <div class="galerie-item" data-img="${g.url}">
-                    <img src="${g.url}" alt="${g.titre}">
-                    <div class="galerie-overlay">${g.titre}</div>
+            if (!images || images.length === 0) {
+                grid.innerHTML = '<p style="text-align:center;">Aucune image disponible</p>';
+                return;
+            }
+            grid.innerHTML = images.map(img => `
+                <div class="galerie-item" data-img="${img.url}">
+                    <img src="${img.url}" alt="${escapeHtml(img.titre || 'Image')}">
+                    <div class="galerie-overlay">${escapeHtml(img.titre || '')}</div>
                 </div>
             `).join('');
+            
+            // Lightbox
             document.querySelectorAll('.galerie-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const lightbox = document.getElementById('lightbox');
@@ -1554,47 +1199,237 @@
                 });
             });
         }
-
-        // Témoignages
-        function renderTemoignages() {
-            const temoignages = getTemoignages();
+        
+        // Charger les témoignages
+        async function loadTemoignages() {
+            try {
+                const response = await fetch(API_BASE + 'get_temoignages.php');
+                const result = await response.json();
+                if (result.success) {
+                    renderTemoignages(result.data);
+                    return result.data;
+                }
+            } catch (error) {
+                console.error('Erreur chargement témoignages:', error);
+            }
+        }
+        
+        function renderTemoignages(temoignages) {
             const grid = document.getElementById('temoignagesGrid');
+            if (!temoignages || temoignages.length === 0) {
+                grid.innerHTML = '<p style="text-align:center;">Aucun témoignage disponible</p>';
+                return;
+            }
             grid.innerHTML = temoignages.map(t => `
                 <div class="temoignage-card">
-                    <div class="temoignage-etoiles">${'★'.repeat(t.note)}${'☆'.repeat(5-t.note)}</div>
-                    <p class="temoignage-texte">"${t.texte}"</p>
-                    <div class="temoignage-nom">${t.nom}</div>
-                    <div class="temoignage-niveau">${t.niveau}</div>
+                    <div class="temoignage-etoiles">${'★'.repeat(t.note || 5)}${'☆'.repeat(5 - (t.note || 5))}</div>
+                    <p class="temoignage-texte">"${escapeHtml(t.texte || '')}"</p>
+                    <div class="temoignage-nom">${escapeHtml(t.nom)}</div>
+                    <div class="temoignage-niveau">${escapeHtml(t.niveau || '')}</div>
                 </div>
             `).join('');
         }
-
+        
+        // Envoyer message contact
+        async function sendContactMessage(formData) {
+            try {
+                const response = await fetch(API_BASE + 'add_message.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                return await response.json();
+            } catch (error) {
+                return { success: false, message: 'Erreur de connexion' };
+            }
+        }
+        
+        // Newsletter
+        async function subscribeNewsletter(email) {
+            try {
+                const response = await fetch(API_BASE + 'add_newsletter.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+                return await response.json();
+            } catch (error) {
+                return { success: false, message: 'Erreur de connexion' };
+            }
+        }
+        
         // ============================================================
-        // STATISTIQUES ANIMEES
+        // CARROUSEL PROFESSEURS
         // ============================================================
-        function animateStats() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(stat => {
-                const target = parseInt(stat.dataset.target);
-                let current = 0;
-                const increment = target / 50;
-                const updateCounter = () => {
-                    if (current < target) {
-                        current += increment;
-                        stat.textContent = Math.round(current);
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        stat.textContent = target;
-                    }
-                };
-                updateCounter();
+        let currentSlide = 0;
+        let profsPerView = 3;
+        
+        function updateCarousel() {
+            const track = document.getElementById('professeursTrack');
+            const cards = document.querySelectorAll('.prof-card');
+            if (cards.length === 0) return;
+            
+            profsPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+            const maxSlide = Math.max(0, cards.length - profsPerView);
+            currentSlide = Math.min(currentSlide, maxSlide);
+            const cardWidth = cards[0]?.offsetWidth + 32 || 340;
+            track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+            
+            const dotsContainer = document.getElementById('carouselDots');
+            const dotCount = Math.ceil(cards.length / profsPerView);
+            if (dotCount > 1) {
+                dotsContainer.innerHTML = Array.from({ length: dotCount }, (_, i) => 
+                    `<span class="dot ${i === currentSlide ? 'active' : ''}" data-slide="${i}"></span>`
+                ).join('');
+                document.querySelectorAll('.dot').forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        currentSlide = parseInt(e.target.dataset.slide);
+                        updateCarousel();
+                    });
+                });
+            } else {
+                dotsContainer.innerHTML = '';
+            }
+        }
+        
+        // ============================================================
+        // UTILITAIRES
+        // ============================================================
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
             });
         }
-
+        
+        // Animation des statistiques
+        function animateStats() {
+            const stats = [428, 12, 8, 96];
+            const elements = ['statEleves', 'statProfs', 'statAnnees', 'statTaux'];
+            elements.forEach((id, idx) => {
+                const el = document.getElementById(id);
+                const target = stats[idx];
+                let current = 0;
+                const increment = target / 50;
+                const interval = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        el.innerText = target;
+                        clearInterval(interval);
+                    } else {
+                        el.innerText = Math.floor(current);
+                    }
+                }, 30);
+            });
+        }
+        
         // ============================================================
-        // INTERSECTION OBSERVER (animations au scroll)
+        // EVENT LISTENERS
         // ============================================================
-        const observerOptions = { threshold: 0.2, rootMargin: '0px' };
+        
+        // Filtres matières
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const niveau = btn.dataset.niveau;
+                renderMatieres(niveau);
+            });
+        });
+        
+        // Formulaire contact
+        document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitContactBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="loader"></span> Envoi...';
+            submitBtn.disabled = true;
+            
+            const formData = {
+                nom: document.getElementById('contactNom').value,
+                email: document.getElementById('contactEmail').value,
+                telephone: document.getElementById('contactTel').value,
+                message: document.getElementById('contactMessage').value
+            };
+            
+            const result = await sendContactMessage(formData);
+            const formMessage = document.getElementById('formMessage');
+            
+            if (result.success) {
+                formMessage.textContent = result.message || 'Message envoyé avec succès !';
+                formMessage.className = 'form-message success';
+                document.getElementById('contactForm').reset();
+            } else {
+                formMessage.textContent = result.message || 'Une erreur est survenue';
+                formMessage.className = 'form-message error';
+            }
+            
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            setTimeout(() => formMessage.className = 'form-message', 5000);
+        });
+        
+        // Newsletter
+        document.getElementById('newsletterForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            const result = await subscribeNewsletter(email);
+            alert(result.message || (result.success ? 'Inscription réussie !' : 'Erreur'));
+            if (result.success) e.target.reset();
+        });
+        
+        // Navigation
+        document.getElementById('decouvrirBtn')?.addEventListener('click', () => {
+            document.getElementById('matieres')?.scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('contactBtn')?.addEventListener('click', () => {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('btnInscription')?.addEventListener('click', () => {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Navbar scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+        
+        // Menu hamburger
+        document.getElementById('menuHamburger')?.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+        
+        // Lightbox close
+        document.querySelector('.close-lightbox')?.addEventListener('click', () => {
+            document.getElementById('lightbox').classList.remove('active');
+        });
+        document.getElementById('lightbox')?.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                document.getElementById('lightbox').classList.remove('active');
+            }
+        });
+        
+        // Carousel navigation
+        document.querySelector('.prev-btn')?.addEventListener('click', () => {
+            const cards = document.querySelectorAll('.prof-card');
+            const maxSlide = Math.max(0, cards.length - profsPerView);
+            if (currentSlide > 0) { currentSlide--; updateCarousel(); }
+        });
+        document.querySelector('.next-btn')?.addEventListener('click', () => {
+            const cards = document.querySelectorAll('.prof-card');
+            const maxSlide = Math.max(0, cards.length - profsPerView);
+            if (currentSlide < maxSlide) { currentSlide++; updateCarousel(); }
+        });
+        
+        window.addEventListener('resize', () => updateCarousel());
+        
+        // Intersection Observer pour animations
+        const observerOptions = { threshold: 0.2 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1606,125 +1441,29 @@
                 }
             });
         }, observerOptions);
-
+        
         document.querySelectorAll('.matieres-section, .professeurs-section, .offres-section, .galerie-section, .why-section, .temoignages-section, .contact-section, .stats-section').forEach(section => {
             section.style.opacity = '0';
             section.style.transform = 'translateY(30px)';
             section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(section);
         });
-
-        // ============================================================
-        // NAVBAR SCROLL
-        // ============================================================
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Menu hamburger
-        const menuHamburger = document.getElementById('menuHamburger');
-        const navMenu = document.getElementById('navMenu');
-        menuHamburger?.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Boutons navigation
-        document.getElementById('decouvrirBtn')?.addEventListener('click', () => {
-            document.getElementById('matieres')?.scrollIntoView({ behavior: 'smooth' });
-        });
-        document.getElementById('contactBtn')?.addEventListener('click', () => {
-            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-        });
-        document.getElementById('btnInscription')?.addEventListener('click', () => {
-            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Filtres matières
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const niveau = btn.dataset.niveau;
-                renderMatieres(niveau);
-            });
-        });
-
-        // Formulaire contact
-        const contactForm = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-        contactForm?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nom = document.getElementById('contactNom').value;
-            const email = document.getElementById('contactEmail').value;
-            const tel = document.getElementById('contactTel').value;
-            const message = document.getElementById('contactMessage').value;
-            if (!nom || !email || !tel) {
-                formMessage.textContent = 'Veuillez remplir tous les champs';
-                formMessage.className = 'form-message error';
-                setTimeout(() => formMessage.className = 'form-message', 3000);
-                return;
-            }
-            addMessage({ nom, email, tel, message });
-            formMessage.textContent = 'Message envoyé avec succès ! Nous vous contacterons rapidement.';
-            formMessage.className = 'form-message success';
-            contactForm.reset();
-            setTimeout(() => formMessage.className = 'form-message', 3000);
-        });
-
-        // Lightbox close
-        document.querySelector('.close-lightbox')?.addEventListener('click', () => {
-            document.getElementById('lightbox').classList.remove('active');
-        });
-        document.getElementById('lightbox')?.addEventListener('click', (e) => {
-            if (e.target === document.getElementById('lightbox')) {
-                document.getElementById('lightbox').classList.remove('active');
-            }
-        });
-
-        // Carousel navigation
-        document.querySelector('.prev-btn')?.addEventListener('click', () => {
-            const profs = getProfesseurs();
-            const maxSlide = Math.max(0, profs.length - profsPerView);
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateCarousel();
-            }
-        });
-        document.querySelector('.next-btn')?.addEventListener('click', () => {
-            const profs = getProfesseurs();
-            const maxSlide = Math.max(0, profs.length - profsPerView);
-            if (currentSlide < maxSlide) {
-                currentSlide++;
-                updateCarousel();
-            }
-        });
-
-        window.addEventListener('resize', () => {
-            updateCarousel();
-        });
-
+        
         // ============================================================
         // INITIALISATION
         // ============================================================
-        initDB();
-        renderMatieres('all');
-        renderProfesseurs();
-        renderOffres();
-        renderGalerie();
-        renderTemoignages();
-
-        // Animation stats au scroll - déclenchement manuel
-        setTimeout(() => {
-            const statsSection = document.querySelector('.stats-section');
-            if (statsSection && statsSection.getBoundingClientRect().top < window.innerHeight) {
-                animateStats();
-            }
-        }, 500);
+        async function init() {
+            await Promise.all([
+                loadStats(),
+                loadMatieres(),
+                loadProfesseurs(),
+                loadOffres(),
+                loadGalerie(),
+                loadTemoignages()
+            ]);
+        }
+        
+        init();
     </script>
 </body>
 </html>
